@@ -59,8 +59,26 @@
     border-bottom: 0.5px solid rgba(201,168,76,0.2);
   }
 
+  /* ── Logos ── */
   .nav-logo img {
-    height: 44px;
+    height: 2.75rem;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* pictogram oculto no desktop */
+  .nav-logo .logo-pictogram { display: none; }
+  .nav-logo .logo-full      { display: block; }
+
+  .sidebar-header img {
+    height: 2.25rem;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .footer-logo img {
+    height: 5rem;
     width: auto;
     display: block;
     object-fit: contain;
@@ -179,17 +197,13 @@
     height: var(--nav-h);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 1.75rem;
     border-bottom: 0.5px solid rgba(201,168,76,0.15);
     flex-shrink: 0;
   }
 
-  .sidebar-header img {
-    height: 36px;
-    width: auto;
-    object-fit: contain;
-  }
+  .sidebar-header img { display: none; }
 
   .sidebar-close {
     width: 36px; height: 36px;
@@ -1097,6 +1111,10 @@
     .nav-burger { display: flex; }
     .sidebar-overlay { display: block; }
 
+    /* troca logo horizontal pelo pictogram */
+    .nav-logo .logo-full      { display: none; }
+    .nav-logo .logo-pictogram { display: block; height: 2.25rem; width: auto; }
+
     .hero {
       grid-template-columns: 1fr;
       min-height: calc(100svh - var(--nav-h));
@@ -1143,6 +1161,7 @@
 
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+    .footer-logo img { height: 3rem; }
 
     .cta-actions { flex-direction: column; align-items: stretch; gap: 1rem; }
     .cta-actions .btn-primary { text-align: center; }
@@ -1171,7 +1190,8 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="./img/logo.png" alt="Clínica Carassini" style="height: 2.5rem;">
+    <img src="./img/logo.png"        class="logo-full"      alt="Clínica Carassini">
+    <img src="./img/pictogram.png"   class="logo-pictogram" alt="Clínica Carassini">
   </a>
 
   <ul class="nav-links">
@@ -1514,8 +1534,8 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#">
-        <img src="./img/logo.png" alt="Clínica Carassini" style="height:80px;width:auto;display:block;">
+      <a href="#" class="footer-logo">
+        <img src="./img/logo.png" alt="Clínica Carassini">
       </a>
       <p>Excelência em odontologia estética com mais de uma década transformando sorrisos e elevando autoestima. Tecnologia, arte e ciência a serviço do seu melhor sorriso.</p>
       <div class="social-links">
