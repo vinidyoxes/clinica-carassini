@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clínica Carassini — Odontologia Estética</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,9 +21,9 @@
     --gold: #c9a84c;
     --gold-light: #e2c97e;
     --gold-dark: #a0802e;
-    --gold-muted: #c9a84c22;
-    --serif: 'Cormorant Garamond', Georgia, serif;
+    --serif: 'Raleway', sans-serif;
     --sans: 'Montserrat', sans-serif;
+    --nav-h: 72px;
   }
 
   html { scroll-behavior: smooth; }
@@ -37,40 +37,43 @@
     overflow-x: hidden;
   }
 
-  /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-  /* ─── NAV ─── */
+  /* ══════════════════════════════
+     NAV
+  ══════════════════════════════ */
   nav {
-    position: static;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 5%;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    height: var(--nav-h);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
     backdrop-filter: blur(20px);
-    background: rgba(10,10,10,0.85);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.92);
     border-bottom: 0.5px solid rgba(201,168,76,0.2);
-    transition: padding 0.4s;
   }
 
-  .logo {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    color: var(--white);
-    text-decoration: none;
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
   }
 
-  .logo span { color: var(--gold); }
-
-  nav ul {
+  .nav-links {
     list-style: none;
-    display: flex; gap: 2.5rem;
+    display: flex;
+    gap: 2.5rem;
   }
 
-  nav ul a {
-    font-size: 0.7rem;
+  .nav-links a {
+    font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -80,7 +83,7 @@
     position: relative;
   }
 
-  nav ul a::after {
+  .nav-links a::after {
     content: '';
     position: absolute; bottom: -4px; left: 0; right: 0;
     height: 0.5px;
@@ -90,24 +93,193 @@
     transition: transform 0.4s ease;
   }
 
-  nav ul a:hover { color: var(--gold); }
-  nav ul a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
   .nav-cta {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 0.65rem 1.4rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* burger */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none;
+    border: 0.5px solid rgba(201,168,76,0.3);
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.3s;
+  }
+
+  .nav-burger:hover { border-color: var(--gold); }
+
+  .nav-burger span {
+    display: block;
+    width: 20px; height: 1px;
+    background: var(--gold);
+    transition: transform 0.4s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ══════════════════════════════
+     SIDEBAR
+  ══════════════════════════════ */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(0,0,0,0);
+    pointer-events: none;
+    transition: background 0.4s ease;
+  }
+
+  .sidebar-overlay.visible {
+    background: rgba(0,0,0,0.65);
+    pointer-events: all;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(320px, 85vw);
+    height: 100dvh;
+    z-index: 300;
+    background: var(--off-black);
+    border-left: 0.5px solid rgba(201,168,76,0.2);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: transform;
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .sidebar-header {
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.75rem;
+    border-bottom: 0.5px solid rgba(201,168,76,0.15);
+    flex-shrink: 0;
+  }
+
+  .sidebar-header img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .sidebar-close {
+    width: 36px; height: 36px;
+    background: none;
+    border: 0.5px solid rgba(201,168,76,0.3);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .sidebar-close:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .sidebar-nav {
+    list-style: none;
+    padding: 2rem 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-nav li {
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+  }
+
+  .sidebar-nav a::after {
+    content: '→';
+    color: var(--gold);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .sidebar-nav a:hover { color: var(--gold); padding-left: 0.5rem; }
+  .sidebar-nav a:hover::after { opacity: 1; transform: translateX(0); }
+
+  .sidebar-footer {
+    padding: 1.75rem;
+    border-top: 0.5px solid rgba(201,168,76,0.15);
+    flex-shrink: 0;
+  }
+
+  .sidebar-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--black);
     background: var(--gold);
-    padding: 0.65rem 1.5rem;
+    padding: 1rem;
     text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
+    margin-bottom: 1.25rem;
   }
 
-  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .sidebar-cta:hover { background: var(--gold-light); }
 
-  /* ─── HERO ─── */
+  .sidebar-contact {
+    font-size: 0.7rem;
+    color: var(--gray);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .sidebar-contact a { color: var(--gold); text-decoration: none; }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -115,6 +287,7 @@
     position: relative;
     overflow: hidden;
     background-color: var(--black);
+    padding-top: var(--nav-h);
   }
 
   .hero-bg {
@@ -125,25 +298,19 @@
     overflow: hidden;
   }
 
-  /* radial glow dourado no canto superior esquerdo */
   .hero-bg::before {
     content: '';
     position: absolute;
-    top: -20%;
-    left: -10%;
-    width: 70%;
-    height: 80%;
+    top: -20%; left: -10%;
+    width: 70%; height: 80%;
     background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 65%);
   }
 
-  /* radial glow sutil no centro-baixo */
   .hero-bg::after {
     content: '';
     position: absolute;
-    bottom: -10%;
-    left: 20%;
-    width: 50%;
-    height: 60%;
+    bottom: -10%; left: 20%;
+    width: 50%; height: 60%;
     background: radial-gradient(ellipse at center, rgba(201,168,76,0.04) 0%, transparent 65%);
   }
 
@@ -151,14 +318,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10rem 5% 5rem 8%;
+    padding: 5rem 5% 5rem 8%;
     position: relative;
     z-index: 2;
   }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 1rem;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -171,22 +338,25 @@
     display: block;
     width: 2rem; height: 0.5px;
     background: var(--gold);
+    flex-shrink: 0;
   }
 
   .hero-title {
     font-family: var(--serif);
-    font-size: clamp(3.5rem, 6vw, 6rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    font-weight: 200;
+    line-height: 1.08;
+    letter-spacing: 0.04em;
     color: var(--white);
     margin-bottom: 2rem;
   }
 
   .hero-title em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 100;
     color: var(--gold);
     display: block;
+    letter-spacing: 0.08em;
   }
 
   .hero-subtitle {
@@ -200,22 +370,24 @@
 
   .hero-actions {
     display: flex; gap: 1.5rem; align-items: center;
+    flex-wrap: wrap;
   }
 
   .btn-primary {
     font-family: var(--sans);
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--black);
     background: var(--gold);
-    padding: 1rem 2.5rem;
+    padding: 1rem 2.2rem;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
   }
 
   .btn-primary::before {
@@ -230,7 +402,7 @@
   .btn-primary span { position: relative; z-index: 1; }
 
   .btn-ghost {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -238,13 +410,10 @@
     text-decoration: none;
     display: flex; align-items: center; gap: 0.75rem;
     transition: color 0.3s;
+    white-space: nowrap;
   }
 
-  .btn-ghost::after {
-    content: '→';
-    transition: transform 0.3s;
-  }
-
+  .btn-ghost::after { content: '→'; transition: transform 0.3s; }
   .btn-ghost:hover { color: var(--gold); }
   .btn-ghost:hover::after { transform: translateX(4px); }
 
@@ -278,7 +447,8 @@
   .hero-badge-num {
     font-family: var(--serif);
     font-size: 2.5rem;
-    font-weight: 300;
+    font-weight: 100;
+    letter-spacing: 0.05em;
     color: var(--gold);
     line-height: 1;
   }
@@ -291,27 +461,31 @@
     margin-top: 0.25rem;
   }
 
-  /* ─── GOLD LINE ─── */
+  /* ══════════════════════════════
+     GOLD LINE
+  ══════════════════════════════ */
   .gold-line {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     opacity: 0.4;
   }
 
-  /* ─── TRUST BAR ─── */
+  /* ══════════════════════════════
+     TRUST BAR
+  ══════════════════════════════ */
   .trust-bar {
     background: var(--off-black);
-    padding: 2rem 8%;
+    padding: 1.75rem 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
   }
 
   .trust-item {
-    display: flex; align-items: center; gap: 1rem;
-    font-size: 0.65rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -319,13 +493,15 @@
   }
 
   .trust-item svg {
-    width: 20px; height: 20px;
+    width: 18px; height: 18px;
     stroke: var(--gold); fill: none;
     stroke-width: 1.5;
     flex-shrink: 0;
   }
 
-  /* ─── SECTION BASE ─── */
+  /* ══════════════════════════════
+     SECTIONS
+  ══════════════════════════════ */
   section { padding: 7rem 8%; }
 
   .section-tag {
@@ -346,17 +522,15 @@
 
   .section-title {
     font-family: var(--serif);
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    font-weight: 200;
+    line-height: 1.12;
+    letter-spacing: 0.03em;
     color: var(--white);
     margin-bottom: 1.5rem;
   }
 
-  .section-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  .section-title em { font-style: normal; font-weight: 100; color: var(--gold); letter-spacing: 0.06em; }
 
   .section-lead {
     font-size: 0.85rem;
@@ -366,7 +540,9 @@
     max-width: 540px;
   }
 
-  /* ─── ABOUT ─── */
+  /* ══════════════════════════════
+     ABOUT
+  ══════════════════════════════ */
   .about {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -374,9 +550,7 @@
     align-items: center;
   }
 
-  .about-visual {
-    position: relative;
-  }
+  .about-visual { position: relative; }
 
   .about-img-wrap {
     position: relative;
@@ -396,7 +570,8 @@
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    filter: grayscale(30%) brightness(0.8);
+    object-position: center top;
+    filter: grayscale(20%) brightness(0.85);
   }
 
   .about-quote {
@@ -410,11 +585,12 @@
 
   .about-quote blockquote {
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     font-style: italic;
+    letter-spacing: 0.03em;
     color: var(--white);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .about-quote cite {
@@ -443,7 +619,8 @@
   .stat-num {
     font-family: var(--serif);
     font-size: 2.5rem;
-    font-weight: 300;
+    font-weight: 100;
+    letter-spacing: 0.05em;
     color: var(--gold);
     line-height: 1;
   }
@@ -456,7 +633,9 @@
     margin-top: 0.5rem;
   }
 
-  /* ─── SERVICES ─── */
+  /* ══════════════════════════════
+     SERVICES
+  ══════════════════════════════ */
   .services-section { background: var(--off-black); }
 
   .services-header {
@@ -518,8 +697,9 @@
 
   .service-name {
     font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
     color: var(--white);
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -543,7 +723,9 @@
 
   .service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
 
-  /* ─── PROCESS ─── */
+  /* ══════════════════════════════
+     PROCESS
+  ══════════════════════════════ */
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -559,10 +741,7 @@
     background: linear-gradient(to right, var(--gold) 0%, rgba(201,168,76,0.2) 100%);
   }
 
-  .step {
-    text-align: center;
-    position: relative;
-  }
+  .step { text-align: center; }
 
   .step-dot {
     width: 3rem; height: 3rem;
@@ -579,8 +758,9 @@
 
   .step-title {
     font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
     color: var(--white);
     margin-bottom: 0.75rem;
   }
@@ -592,7 +772,9 @@
     color: var(--gray);
   }
 
-  /* ─── DEPOIMENTOS ─── */
+  /* ══════════════════════════════
+     TESTIMONIALS
+  ══════════════════════════════ */
   .testimonials-section { background: var(--off-black); }
 
   .testimonials-grid {
@@ -619,35 +801,33 @@
     line-height: 1;
   }
 
-  .stars {
-    display: flex; gap: 3px; margin-bottom: 1.5rem;
-  }
-
-  .stars svg {
-    width: 14px; height: 14px;
-    fill: var(--gold);
-    stroke: none;
-  }
+  .stars { display: flex; gap: 3px; margin-bottom: 1.5rem; }
+  .stars svg { width: 14px; height: 14px; fill: var(--gold); stroke: none; }
 
   .testimonial-text {
     font-family: var(--serif);
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 300;
     font-style: italic;
+    letter-spacing: 0.02em;
     color: var(--white);
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 2rem;
     position: relative; z-index: 1;
   }
 
-  .testimonial-author {
-    display: flex; align-items: center; gap: 1rem;
-  }
+  .testimonial-author { display: flex; align-items: center; gap: 1rem; }
 
   .author-avatar {
-    width: 42px; height: 42px; border-radius: 50%;
+    width: 42px; height: 42px;
+    border-radius: 50%;
     border: 1px solid rgba(201,168,76,0.3);
-    object-fit: cover; filter: grayscale(40%);
+    background: var(--gray-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--gold);
+    flex-shrink: 0;
   }
 
   .author-name {
@@ -664,7 +844,9 @@
     letter-spacing: 0.1em;
   }
 
-  /* ─── ANTES/DEPOIS placeholder ─── */
+  /* ══════════════════════════════
+     RESULTS
+  ══════════════════════════════ */
   .results-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -686,17 +868,6 @@
 
   .result-card:hover { transform: scale(1.01); }
 
-  .result-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, var(--gray-dark) 0%, var(--black) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif);
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    color: rgba(201,168,76,0.2);
-    text-transform: uppercase;
-  }
-
   .result-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.85) 30%, transparent);
@@ -714,12 +885,15 @@
   .result-title {
     position: relative; z-index: 1;
     font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-size: 1.2rem;
+    font-weight: 200;
+    letter-spacing: 0.06em;
     color: var(--white);
   }
 
-  /* ─── CTA BAND ─── */
+  /* ══════════════════════════════
+     CTA
+  ══════════════════════════════ */
   .cta-section {
     background: var(--off-black);
     text-align: center;
@@ -753,14 +927,15 @@
 
   .cta-title {
     font-family: var(--serif);
-    font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 300;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 200;
+    letter-spacing: 0.04em;
     color: var(--white);
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.12;
   }
 
-  .cta-title em { color: var(--gold); font-style: italic; }
+  .cta-title em { color: var(--gold); font-style: normal; font-weight: 100; letter-spacing: 0.08em; }
 
   .cta-lead {
     font-size: 0.85rem;
@@ -773,6 +948,7 @@
 
   .cta-actions {
     display: flex; gap: 1.5rem; justify-content: center; align-items: center;
+    flex-wrap: wrap;
   }
 
   .cta-note {
@@ -783,19 +959,15 @@
     display: flex; align-items: center; justify-content: center; gap: 0.75rem;
   }
 
-  .cta-note::before {
+  .cta-note::before, .cta-note::after {
     content: '';
     display: block; width: 1.5rem; height: 0.5px;
     background: var(--gray);
   }
 
-  .cta-note::after {
-    content: '';
-    display: block; width: 1.5rem; height: 0.5px;
-    background: var(--gray);
-  }
-
-  /* ─── FOOTER ─── */
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
   footer {
     background: var(--black);
     padding: 4rem 8% 2rem;
@@ -811,19 +983,16 @@
     margin-bottom: 2rem;
   }
 
-  .footer-brand .logo { display: block; margin-bottom: 1rem; }
-
   .footer-brand p {
     font-size: 0.78rem;
     font-weight: 300;
     line-height: 1.8;
     color: var(--gray);
     margin-bottom: 2rem;
+    margin-top: 1.25rem;
   }
 
-  .social-links {
-    display: flex; gap: 1rem;
-  }
+  .social-links { display: flex; gap: 1rem; }
 
   .social-link {
     width: 36px; height: 36px;
@@ -851,10 +1020,7 @@
   }
 
   .footer-col ul { list-style: none; }
-
-  .footer-col ul li {
-    margin-bottom: 0.75rem;
-  }
+  .footer-col ul li { margin-bottom: 0.75rem; }
 
   .footer-col ul a {
     font-size: 0.78rem;
@@ -882,28 +1048,15 @@
     gap: 1rem;
   }
 
-  .footer-copy {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.25);
-    letter-spacing: 0.1em;
-  }
+  .footer-copy { font-size: 0.65rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .footer-crm  { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.1em; opacity: 0.6; }
 
-  .footer-crm {
-    font-size: 0.65rem;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    opacity: 0.6;
-  }
-
-  /* ─── ANIMATIONS ─── */
+  /* ══════════════════════════════
+     ANIMATIONS
+  ══════════════════════════════ */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .reveal {
@@ -912,41 +1065,104 @@
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  .hero-left > * {
-    animation: fadeUp 0.9s ease both;
-  }
-  .hero-eyebrow { animation-delay: 0.1s; }
-  .hero-title { animation-delay: 0.25s; }
+  .hero-left > * { animation: fadeUp 0.9s ease both; }
+  .hero-eyebrow  { animation-delay: 0.1s; }
+  .hero-title    { animation-delay: 0.25s; }
   .hero-subtitle { animation-delay: 0.4s; }
-  .hero-actions { animation-delay: 0.55s; }
+  .hero-actions  { animation-delay: 0.55s; }
 
-  /* ─── RESPONSIVE ─── */
+  /* ══════════════════════════════
+     BREAKPOINT — TABLET 1024px
+  ══════════════════════════════ */
   @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { gap: 1.8rem; }
+    .nav-links a { font-size: 0.62rem; }
+
+    .services-grid       { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid   { grid-template-columns: repeat(2, 1fr); }
+    .process-steps       { grid-template-columns: repeat(2, 1fr); }
     .process-steps::before { display: none; }
-    .results-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .results-grid        { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid         { grid-template-columns: 1fr 1fr; gap: 3rem; }
   }
 
+  /* ══════════════════════════════
+     BREAKPOINT — MOBILE 768px
+  ══════════════════════════════ */
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
+    .nav-links  { display: none; }
+    .nav-cta    { display: none; }
+    .nav-burger { display: flex; }
+    .sidebar-overlay { display: block; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: calc(100svh - var(--nav-h));
+    }
+
+    .hero-left {
+      padding: 3.5rem 6% 4rem;
+    }
+
     .hero-right { display: none; }
-    .hero-left { padding: 9rem 5% 5rem; }
-    .about { grid-template-columns: 1fr; gap: 3rem; }
-    .about-quote { position: static; margin-top: 1.5rem; max-width: 100%; }
-    .services-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .results-grid { grid-template-columns: 1fr; }
-    nav ul { display: none; }
-    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    section { padding: 5rem 5%; }
+
+    .hero-subtitle { max-width: 100%; }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .btn-primary { text-align: center; }
+
+    .trust-bar { padding: 1.5rem 6%; }
+    .trust-item { width: calc(50% - 0.5rem); }
+
+    section { padding: 4.5rem 6%; }
+
+    .about { grid-template-columns: 1fr; gap: 3.5rem; }
+
+    .about-quote {
+      position: static;
+      margin-top: 1.5rem;
+      max-width: 100%;
+    }
+
+    .about-img-wrap::after { display: none; }
+
+    .services-grid      { grid-template-columns: 1fr; }
+    .results-grid       { grid-template-columns: 1fr; }
+    .testimonials-grid  { grid-template-columns: 1fr; }
+
+    .result-card { aspect-ratio: 4/3; }
+
+    .services-header { flex-direction: column; align-items: flex-start; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+
+    .cta-actions { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .cta-actions .btn-primary { text-align: center; }
+  }
+
+  /* ══════════════════════════════
+     BREAKPOINT — SMALL 480px
+  ══════════════════════════════ */
+  @media (max-width: 480px) {
+    :root { --nav-h: 64px; }
+
+    .trust-item { width: 100%; }
+
+    .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card { padding: 1.25rem; }
+
+    .hero-title { font-size: clamp(2.4rem, 11vw, 3.5rem); }
+    .section-title { font-size: clamp(2rem, 9vw, 3rem); }
+
+    .footer-grid { gap: 2rem; }
   }
 </style>
 </head>
@@ -954,48 +1170,75 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo-img-link">
-    <img src="./img/logo-horizontal.png" alt="Clínica Carassini" style="height:100px ;width:300px;display:block;object-fit: cover;object-position: center;">
+  <a href="#" class="nav-logo">
+    <img src="./img/logo-horizontal.png" alt="Clínica Carassini">
   </a>
-  <ul>
+
+  <ul class="nav-links">
     <li><a href="#sobre">Clínica</a></li>
     <li><a href="#tratamentos">Tratamentos</a></li>
     <li><a href="#resultados">Resultados</a></li>
     <li><a href="#depoimentos">Depoimentos</a></li>
   </ul>
+
   <a href="#agendar" class="nav-cta">Agendar Consulta</a>
+
+  <button class="nav-burger" id="burgerBtn" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+  <div class="sidebar-header">
+    <img src="./img/logo-horizontal.png" alt="Clínica Carassini">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu">✕</button>
+  </div>
+
+  <ul class="sidebar-nav">
+    <li><a href="#sobre"       class="sl">Clínica</a></li>
+    <li><a href="#tratamentos" class="sl">Tratamentos</a></li>
+    <li><a href="#resultados"  class="sl">Resultados</a></li>
+    <li><a href="#depoimentos" class="sl">Depoimentos</a></li>
+    <li><a href="#processo"    class="sl">Como Funciona</a></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a href="#agendar" class="sidebar-cta sl">Solicitar Avaliação Exclusiva</a>
+    <div class="sidebar-contact">
+      <a href="tel:+5511999999999">(11) 9 9999-9999</a><br>
+      Seg–Sáb · 8h às 20h
+    </div>
+  </div>
+</aside>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-
-  <!-- Padrão de fundo sutil -->
   <div class="hero-bg">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
       <defs>
-        <!-- Grade de losangos dourados -->
         <pattern id="diamondGrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
           <path d="M30 4 L56 30 L30 56 L4 30 Z" fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="0.8"/>
         </pattern>
-        <!-- Círculos concêntricos no canto -->
         <radialGradient id="fadeOut" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="white" stop-opacity="1"/>
+          <stop offset="0%"   stop-color="white" stop-opacity="1"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
         <mask id="gridMask">
           <rect width="100%" height="100%" fill="url(#fadeOut)"/>
         </mask>
       </defs>
-      <!-- Grade aplicada com fade -->
       <rect width="100%" height="100%" fill="url(#diamondGrid)" mask="url(#gridMask)" opacity="0.9"/>
-      <!-- Arco decorativo grande no canto superior esquerdo -->
       <circle cx="-40" cy="-40" r="340" fill="none" stroke="rgba(201,168,76,0.055)" stroke-width="1"/>
       <circle cx="-40" cy="-40" r="480" fill="none" stroke="rgba(201,168,76,0.035)" stroke-width="0.8"/>
-      <circle cx="-40" cy="-40" r="620" fill="none" stroke="rgba(201,168,76,0.02)" stroke-width="0.6"/>
-      <!-- Linha diagonal sutil -->
+      <circle cx="-40" cy="-40" r="620" fill="none" stroke="rgba(201,168,76,0.02)"  stroke-width="0.6"/>
       <line x1="0" y1="100%" x2="50%" y2="0" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
     </svg>
   </div>
+
   <div class="hero-left">
     <div class="hero-eyebrow">Odontologia Estética de Alto Padrão</div>
     <h1 class="hero-title">
@@ -1010,8 +1253,9 @@
       <a href="#tratamentos" class="btn-ghost">Conheça os Tratamentos</a>
     </div>
   </div>
+
   <div class="hero-right">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80&fit=crop" alt="Sorriso saudável e bonito" />
+    <img class="hero-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80&fit=crop" alt="Sorriso saudável e bonito"/>
     <div class="hero-badge">
       <div class="hero-badge-num">+2.800</div>
       <div class="hero-badge-label">Sorrisos Transformados</div>
@@ -1050,7 +1294,7 @@
   <div class="about">
     <div class="about-visual">
       <div class="about-img-wrap">
-        <img class="about-img" src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=700&q=80&fit=crop&crop=top" alt="Dr. Rudson Carassini" />
+        <img class="about-img" src="./img/rudson.jpeg" alt="Dr. Rudson Carassini — Fundador da Clínica Carassini"/>
       </div>
       <div class="about-quote">
         <blockquote>"Cada sorriso que transformamos carrega uma história de autoestima renovada."</blockquote>
@@ -1059,11 +1303,9 @@
     </div>
     <div class="about-content reveal">
       <div class="section-tag">Nossa História</div>
-      <h2 class="section-title">
-        Ciência e arte<br>a serviço do seu<br><em>sorriso ideal</em>
-      </h2>
+      <h2 class="section-title">Ciência e arte<br>a serviço do seu<br><em>sorriso ideal</em></h2>
       <p class="section-lead">
-        Há mais de uma década, a Lumière combina protocolos clínicos de excelência com um olhar estético apurado. Acreditamos que um sorriso saudável e belo é um direito, não um privilégio.
+        Há mais de uma década, a Clínica Carassini combina protocolos clínicos de excelência com um olhar estético apurado. Acreditamos que um sorriso saudável e belo transforma a forma como você se apresenta ao mundo.
       </p>
       <p class="section-lead" style="margin-top:1rem;">
         Utilizamos materiais cerâmicos de última geração e tecnologia de escaneamento digital 3D para resultados precisos, duradouros e absolutamente naturais.
@@ -1095,9 +1337,7 @@
   <div class="services-header">
     <div>
       <div class="section-tag">Especialidades</div>
-      <h2 class="section-title">
-        Tratamentos que<br><em>fazem a diferença</em>
-      </h2>
+      <h2 class="section-title">Tratamentos que<br><em>fazem a diferença</em></h2>
     </div>
     <p class="section-lead" style="max-width:340px;">
       Do clareamento de alto impacto à reconstrução total do sorriso, cada protocolo é personalizado para o seu perfil.
@@ -1106,63 +1346,42 @@
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-number">01</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <path d="M24 6C14 6 8 13 8 20c0 6 4 11 10 13v5h12v-5c6-2 10-7 10-13 0-7-6-14-16-14z"/>
-        <path d="M18 30l2 2 4-4 4 4 2-2"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><path d="M24 6C14 6 8 13 8 20c0 6 4 11 10 13v5h12v-5c6-2 10-7 10-13 0-7-6-14-16-14z"/><path d="M18 30l2 2 4-4 4 4 2-2"/></svg>
       <h3 class="service-name">Facetas de Porcelana</h3>
       <p class="service-desc">Lâminas ultrafinas que corrigem cor, forma e posição. Resultado estético incomparável com durabilidade de décadas.</p>
       <span class="service-arrow">→</span>
     </div>
     <div class="service-card reveal">
       <div class="service-number">02</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="16" stroke-width="1.5"/>
-        <path d="M18 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-width="1.5"/>
-        <path d="M16 28c1.5 3 4.5 5 8 5s6.5-2 8-5" stroke-width="1.5"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" stroke-width="1.5"/><path d="M18 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-width="1.5"/><path d="M16 28c1.5 3 4.5 5 8 5s6.5-2 8-5" stroke-width="1.5"/></svg>
       <h3 class="service-name">Clareamento a Laser</h3>
       <p class="service-desc">Tecnologia LED de última geração que clareia até 8 tons em uma única sessão. Seguro, rápido e surpreendente.</p>
       <span class="service-arrow">→</span>
     </div>
     <div class="service-card reveal">
       <div class="service-number">03</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <rect x="8" y="14" width="32" height="22" rx="4" stroke-width="1.5"/>
-        <path d="M16 14V10M32 14V10" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M13 26h22M13 32h14" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="22" rx="4" stroke-width="1.5"/><path d="M16 14V10M32 14V10" stroke-width="1.5" stroke-linecap="round"/><path d="M13 26h22M13 32h14" stroke-width="1.5" stroke-linecap="round"/></svg>
       <h3 class="service-name">Implantes Dentários</h3>
       <p class="service-desc">Substituição permanente com titânio premium. Estética e função idênticas ao dente natural, com planejamento 3D.</p>
       <span class="service-arrow">→</span>
     </div>
     <div class="service-card reveal">
       <div class="service-number">04</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <path d="M12 16c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke-width="1.5"/>
-        <path d="M10 20h28v4a14 14 0 01-28 0v-4z" stroke-width="1.5"/>
-        <path d="M20 34v6M28 34v6" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><path d="M12 16c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke-width="1.5"/><path d="M10 20h28v4a14 14 0 01-28 0v-4z" stroke-width="1.5"/><path d="M20 34v6M28 34v6" stroke-width="1.5" stroke-linecap="round"/></svg>
       <h3 class="service-name">Ortodontia Invisível</h3>
       <p class="service-desc">Alinhadores transparentes invisíveis ao olhar. Corrija o posicionamento sem brackets ou desconfortos.</p>
       <span class="service-arrow">→</span>
     </div>
     <div class="service-card reveal">
       <div class="service-number">05</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <path d="M24 8L8 18v14l16 8 16-8V18L24 8z" stroke-width="1.5"/>
-        <circle cx="24" cy="24" r="5" stroke-width="1.5"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><path d="M24 8L8 18v14l16 8 16-8V18L24 8z" stroke-width="1.5"/><circle cx="24" cy="24" r="5" stroke-width="1.5"/></svg>
       <h3 class="service-name">Lentes de Contato Dental</h3>
       <p class="service-desc">A versão mais fina e natural das facetas. Zero desgaste do esmalte, transformação imediata e reversível.</p>
       <span class="service-arrow">→</span>
     </div>
     <div class="service-card reveal">
       <div class="service-number">06</div>
-      <svg class="service-icon" viewBox="0 0 48 48">
-        <path d="M14 10h20v8H14zM10 18h28v4l-4 16H14L10 22v-4z" stroke-width="1.5"/>
-        <path d="M18 26h12M20 32h8" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48"><path d="M14 10h20v8H14zM10 18h28v4l-4 16H14L10 22v-4z" stroke-width="1.5"/><path d="M18 26h12M20 32h8" stroke-width="1.5" stroke-linecap="round"/></svg>
       <h3 class="service-name">Harmonização Orofacial</h3>
       <p class="service-desc">Visão completa do sorriso integrado ao rosto. Procedimentos minimamente invasivos para equilíbrio total.</p>
       <span class="service-arrow">→</span>
@@ -1178,7 +1397,7 @@
     <div class="step reveal">
       <div class="step-dot">I</div>
       <h3 class="step-title">Avaliação Inicial</h3>
-      <p class="step-desc">Consulta completa e gratuita com análise digital do seu sorriso e escaneamento 3D sem radiação.</p>
+      <p class="step-desc">Consulta completa com análise digital do seu sorriso e escaneamento 3D sem radiação.</p>
     </div>
     <div class="step reveal">
       <div class="step-dot">II</div>
@@ -1205,19 +1424,19 @@
   <p class="section-lead reveal">Cada caso é único. Cada sorriso, uma obra de arte clínica.</p>
   <div class="results-grid">
     <div class="result-card reveal">
-      <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe4b9b0?w=600&q=80&fit=crop" alt="Facetas de Porcelana" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);" />
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe4b9b0?w=600&q=80&fit=crop" alt="Facetas de Porcelana" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);"/>
       <div class="result-overlay"></div>
       <div class="result-tag">Caso Clínico · Antes & Depois</div>
       <div class="result-title">Facetas Feldspáticas</div>
     </div>
     <div class="result-card reveal">
-      <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80&fit=crop" alt="Implantes e Coroas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);" />
+      <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80&fit=crop" alt="Implantes e Coroas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);"/>
       <div class="result-overlay"></div>
       <div class="result-tag">Caso Clínico · Antes & Depois</div>
       <div class="result-title">Implantes & Coroas</div>
     </div>
     <div class="result-card reveal">
-      <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&fit=crop" alt="Clareamento Avançado" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);" />
+      <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&fit=crop" alt="Clareamento Avançado" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(0.6);"/>
       <div class="result-overlay"></div>
       <div class="result-tag">Caso Clínico · Antes & Depois</div>
       <div class="result-title">Clareamento Avançado</div>
@@ -1240,11 +1459,8 @@
       </div>
       <p class="testimonial-text">"Fiz facetas de porcelana e o resultado superou todas as expectativas. O Dr. Rudson tem uma sensibilidade artística rara. Meu sorriso nunca esteve tão bonito."</p>
       <div class="testimonial-author">
-        <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#c9a84c;">A</div>
-        <div>
-          <div class="author-name">Ana Carolina S.</div>
-          <div class="author-detail">Facetas de Porcelana</div>
-        </div>
+        <div class="author-avatar">A</div>
+        <div><div class="author-name">Ana Carolina S.</div><div class="author-detail">Facetas de Porcelana</div></div>
       </div>
     </div>
     <div class="testimonial-card reveal">
@@ -1257,11 +1473,8 @@
       </div>
       <p class="testimonial-text">"Adiava o implante há anos por medo. Aqui me explicaram tudo com detalhes, vi o resultado no planejamento digital antes mesmo de começar. Hoje me arrependo só de não ter feito antes."</p>
       <div class="testimonial-author">
-        <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#c9a84c;">R</div>
-        <div>
-          <div class="author-name">Ricardo Mendes</div>
-          <div class="author-detail">Implante Dentário</div>
-        </div>
+        <div class="author-avatar">R</div>
+        <div><div class="author-name">Ricardo Mendes</div><div class="author-detail">Implante Dentário</div></div>
       </div>
     </div>
     <div class="testimonial-card reveal">
@@ -1274,11 +1487,8 @@
       </div>
       <p class="testimonial-text">"O ambiente da clínica já passa credibilidade. Fizemos o clareamento a laser eu e meu marido. Em uma hora, nossos sorrisos mudaram completamente. Atendimento impecável do começo ao fim."</p>
       <div class="testimonial-author">
-        <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#c9a84c;">F</div>
-        <div>
-          <div class="author-name">Fernanda & Paulo T.</div>
-          <div class="author-detail">Clareamento a Laser</div>
-        </div>
+        <div class="author-avatar">F</div>
+        <div><div class="author-name">Fernanda & Paulo T.</div><div class="author-detail">Clareamento a Laser</div></div>
       </div>
     </div>
   </div>
@@ -1294,9 +1504,7 @@
     Agende agora sua consulta de diagnóstico sem compromisso. Em menos de 30 minutos, você saberá exatamente o que é possível alcançar.
   </p>
   <div class="cta-actions reveal">
-    <a href="tel:+5511999999999" class="btn-primary">
-      <span>Ligar Agora · (11) 9 9999-9999</span>
-    </a>
+    <a href="tel:+5511999999999" class="btn-primary"><span>Ligar Agora · (11) 9 9999-9999</span></a>
     <a href="https://wa.me/5511999999999" class="btn-ghost" style="color:var(--gold)">Falar pelo WhatsApp</a>
   </div>
   <p class="cta-note reveal">Atendimento de segunda a sábado · 8h às 20h</p>
@@ -1306,8 +1514,8 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" style="display:inline-block;margin-bottom:1.5rem;">
-        <img src="./img/logo.svg" alt="Clínica Carassini" style="height:40px;width:auto;display:block;object-fit: cover;">
+      <a href="#">
+        <img src="./img/logo.svg" alt="Clínica Carassini" style="height:40px;width:auto;display:block;">
       </a>
       <p>Excelência em odontologia estética com mais de uma década transformando sorrisos e elevando autoestima. Tecnologia, arte e ciência a serviço do seu melhor sorriso.</p>
       <div class="social-links">
@@ -1356,18 +1564,54 @@
 </footer>
 
 <script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  /* ── Sidebar ── */
+  const burger   = document.getElementById('burgerBtn');
+  const sidebar  = document.getElementById('sidebar');
+  const overlay  = document.getElementById('sidebarOverlay');
+  const closeBtn = document.getElementById('sidebarClose');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('visible');
+    burger.classList.add('open');
+    sidebar.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+    burger.classList.remove('open');
+    sidebar.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () =>
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar()
+  );
+
+  closeBtn.addEventListener('click', closeSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sl').forEach(el =>
+    el.addEventListener('click', closeSidebar)
+  );
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSidebar();
+  });
+
+  /* ── Scroll reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, (i % 4) * 100);
-        observer.unobserve(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), (i % 4) * 120);
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  reveals.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
