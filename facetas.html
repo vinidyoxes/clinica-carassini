@@ -65,6 +65,10 @@ body {
   object-fit: contain;
 }
 
+/* pictogram oculto no desktop */
+.topbar-logo .logo-pictogram { display: none; }
+.topbar-logo .logo-full      { display: block; }
+
 .topbar-cta {
   font-size: 0.62rem;
   font-weight: 600;
@@ -1163,6 +1167,10 @@ body {
 @media (max-width: 768px) {
   :root { --pad-x: 5%; --nav-h: 4rem; }
 
+  /* troca logo horizontal pelo pictogram */
+  .topbar-logo .logo-full      { display: none; }
+  .topbar-logo .logo-pictogram { display: block; height: 2.25rem; width: auto; }
+
   .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 4rem; }
   .hero-visual { display: none; }
   .hero-content { padding: 3rem 5%; }
@@ -1191,7 +1199,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .topbar {position: relative;}  
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn-gold,
   .hero-ctas .btn-outline { text-align: center; justify-content: center; }
@@ -1202,8 +1209,215 @@ body {
   .final-ctas .btn-gold,
   .final-ctas .btn-outline { justify-content: center; }
   .process-steps { grid-template-columns: 1fr; }
-  .topbar-logo img {height: 2rem;}
-  .topbar-cta { padding: 0.5rem .5rem; font-size: 0.65rem;
+}
+
+/* ─── SEÇÃO QUEM SOU EU ─── */
+.doctor-section {
+  padding: 6rem var(--pad-x);
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-section-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
+}
+
+.doctor-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.doctor-img-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-img-frame::before {
+  content: '';
+  position: absolute;
+  top: -1rem; left: -1rem;
+  width: 50%; height: 50%;
+  border-top: 0.5px solid rgba(201,168,76,0.4);
+  border-left: 0.5px solid rgba(201,168,76,0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.doctor-img-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem; right: -1rem;
+  width: 50%; height: 50%;
+  border-bottom: 0.5px solid rgba(201,168,76,0.4);
+  border-right: 0.5px solid rgba(201,168,76,0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.doctor-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(15%) brightness(0.88);
+  display: block;
+}
+
+.doctor-credential {
+  position: absolute;
+  bottom: 2rem; left: -1.5rem;
+  background: var(--off-black);
+  border-left: 2px solid var(--gold);
+  padding: 1.25rem 1.75rem;
+  z-index: 3;
+}
+
+.doctor-credential-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+
+.doctor-credential-title {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.2rem;
+}
+
+.doctor-content {
+  position: relative; z-index: 1;
+}
+
+.doctor-story {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--gray-light);
+  margin-bottom: 1rem;
+}
+
+.doctor-story strong {
+  color: var(--white);
+  font-weight: 400;
+}
+
+.doctor-story em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.doctor-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2.5rem 0 2.5rem;
+}
+
+.dvalue {
+  padding: 1.25rem 1.5rem;
+  border: 0.5px solid rgba(201,168,76,0.15);
+  background: rgba(201,168,76,0.03);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.dvalue:hover {
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+}
+
+.dvalue-num {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.dvalue-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 0.35rem;
+}
+
+.doctor-quote {
+  border-left: 2px solid var(--gold);
+  padding: 1.25rem 1.75rem;
+  background: rgba(201,168,76,0.03);
+  margin-top: 0.5rem;
+}
+
+.doctor-quote p {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.doctor-quote cite {
+  display: block;
+  font-size: 0.6rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.75rem;
+}
+
+/* ─── DEPOIMENTOS COM FOTO DE RESULTADO ─── */
+.tcard-result {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85) grayscale(10%);
+  display: block;
+  margin-bottom: 1.75rem;
+}
+
+.tcard-result-label {
+  position: absolute;
+  top: 0.85rem; left: 0.85rem;
+  background: rgba(10,10,10,0.82);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(201,168,76,0.35);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.3rem 0.75rem;
+}
+
+/* responsive doutor */
+@media (max-width: 1024px) {
+  .doctor-section { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .doctor-values { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .doctor-section { grid-template-columns: 1fr; gap: 3rem; }
+  .doctor-credential { position: static; margin-top: 1.5rem; border-left-width: 2px; }
+  .doctor-img-frame::before,
+  .doctor-img-frame::after { display: none; }
 }
 </style>
 </head>
@@ -1217,7 +1431,8 @@ body {
 <!-- NAV -->
 <header class="topbar">
   <a href="index.html" class="topbar-logo">
-    <img src="./img/logo.png" alt="Clínica Carassini">
+    <img class="logo-full"      src="./img/logo.png"        alt="Clínica Carassini">
+    <img class="logo-pictogram" src="./img/pictogram.png"   alt="Clínica Carassini">
   </a>
   <a href="#agendar" class="topbar-cta">Avaliação Gratuita</a>
 </header>
@@ -1247,7 +1462,7 @@ body {
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow">Facetas de Resina & Porcelana</div>
+    <div class="eyebrow">Referência em Facetas no Alto Tietê</div>
 
     <h1 class="hero-title">
       Você não precisa<br>
@@ -1256,7 +1471,7 @@ body {
     </h1>
 
     <p class="hero-subtitle">
-      Facetas dentais finas como uma lente de contato que transformam a cor, forma e posição dos seus dentes — em pouquíssimas consultas, sem dor e com resultado natural.
+      A clínica líder em facetas de Resina e Porcelana em Suzano, Mogi, Poá, Itaquaquecetuba e Ferraz. Tecnologia de ponta, procedimentos indolores e resultado que você aprova antes de fazer.
     </p>
 
     <div class="hero-urgency">
@@ -1275,7 +1490,7 @@ body {
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Nota 5.0 no Google
+        Referência no Alto Tietê
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
@@ -1377,12 +1592,12 @@ body {
     </p>
 
     <ul class="check-list">
-      <li>Procedimento rápido, confortável e seguro</li>
+      <li>Procedimento rápido, confortável e sem dor</li>
       <li>Resultado visível já na 1ª consulta de planejamento</li>
       <li>Sem desgaste excessivo do dente natural</li>
       <li>Resistente a manchas de café, vinho e cigarro</li>
       <li>Durabilidade de 5 a 20 anos conforme o tipo escolhido</li>
-      <li>Aprovadas por mais de 2.800 pacientes da Clínica Carassini</li>
+      <li>A clínica de referência em facetas no Alto Tietê — Suzano, Mogi, Poá, Itaquaquecetuba e Ferraz</li>
     </ul>
 
     <a href="#agendar" class="btn-gold"><span>Quero Avaliar Meu Caso</span></a>
@@ -1551,7 +1766,7 @@ body {
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <p>
       <strong>Sua segurança em primeiro lugar.</strong>
-      Todo o processo é conduzido pelo Dr. Rudson Carassini, especialista com mais de 10 anos em reabilitação estética. Você só avança quando estiver 100% confortável e confiante com o resultado planejado.
+      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em facetas de referência no Alto Tietê. Com mais de 10 anos de experiência e mais de 2.800 casos, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
     </p>
   </div>
 
@@ -1560,7 +1775,89 @@ body {
 <div class="gold-line"></div>
 
 <!-- ═══════════════════════════════
-     6. DEPOIMENTOS
+     6. QUEM SOU EU — DR. RUDSON
+═══════════════════════════════ -->
+<section class="doctor-section" id="doutor">
+
+  <div class="doctor-section-bg" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+      <defs>
+        <pattern id="dgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M30 4 L56 30 L30 56 L4 30 Z" fill="none" stroke="rgba(201,168,76,0.065)" stroke-width="0.7"/>
+        </pattern>
+        <radialGradient id="dfade" cx="30%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+        <mask id="dmask"><rect width="100%" height="100%" fill="url(#dfade)"/></mask>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dgrid)" mask="url(#dmask)"/>
+      <circle cx="0" cy="50%" r="300" fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="0.8"/>
+      <circle cx="0" cy="50%" r="480" fill="none" stroke="rgba(201,168,76,0.04)" stroke-width="0.6"/>
+    </svg>
+    <div style="position:absolute;top:-10%;right:-5%;width:45%;height:65%;background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  </div>
+
+  <div class="doctor-visual reveal">
+    <div class="doctor-img-frame">
+      <img class="doctor-img" src="./img/rudson.jpeg" alt="Dr. Rudson Carassini — Fundador da Clínica Carassini">
+    </div>
+    <div class="doctor-credential">
+      <div class="doctor-credential-name">Dr. Rudson Carassini</div>
+      <div class="doctor-credential-title">Cirurgião-Dentista · Fundador</div>
+    </div>
+  </div>
+
+  <div class="doctor-content reveal">
+    <div class="eyebrow">Quem vai cuidar de você</div>
+    <h2 class="section-title">
+      Formado para curar.<br>
+      Movido por <em>fazer diferente.</em>
+    </h2>
+
+    <p class="doctor-story">
+      <strong>De família de médicos</strong>, o Dr. Rudson Carassini cresceu vendo de perto o impacto que um bom profissional de saúde causa na vida das pessoas. Essa herança moldou não só a escolha da carreira — mas a forma como ele a exerce.
+    </p>
+
+    <p class="doctor-story">
+      Formado pela <strong>Universidade de Mogi das Cruzes</strong>, acumulou anos de experiência atendendo em diferentes consultórios — e foi nesse percurso que identificou algo que o incomodava profundamente: <em>pacientes que evitavam tratamentos por medo da dor e do desconforto.</em>
+    </p>
+
+    <p class="doctor-story">
+      Foi esse incômodo que o levou a fundar a <strong>Clínica Carassini</strong>, em Suzano — com uma missão clara: oferecer procedimentos menos invasivos, indolores e com a mais alta tecnologia disponível. Hoje, é a clínica de referência em facetas dentais em toda a região do <em>Alto Tietê</em>, atendendo pacientes de Suzano, Mogi das Cruzes, Poá, Itaquaquecetuba e Ferraz de Vasconcelos.
+    </p>
+
+    <div class="doctor-values">
+      <div class="dvalue">
+        <div class="dvalue-num">10+</div>
+        <div class="dvalue-label">Anos de Experiência</div>
+      </div>
+      <div class="dvalue">
+        <div class="dvalue-num">2.8k</div>
+        <div class="dvalue-label">Pacientes Atendidos</div>
+      </div>
+      <div class="dvalue">
+        <div class="dvalue-num">UMC</div>
+        <div class="dvalue-label">Formação · Mogi das Cruzes</div>
+      </div>
+      <div class="dvalue">
+        <div class="dvalue-num">5.0</div>
+        <div class="dvalue-label">Nota no Google</div>
+      </div>
+    </div>
+
+    <div class="doctor-quote">
+      <p>"Quando o paciente sai daqui sem sentir dor, com o resultado que esperava e com confiança no sorriso — esse é o momento que me lembro por que escolhi essa profissão."</p>
+      <cite>Dr. Rudson Carassini</cite>
+    </div>
+  </div>
+
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══════════════════════════════
+     7. DEPOIMENTOS
 ═══════════════════════════════ -->
 <section class="testimonials-section">
   <div class="testimonials-header reveal">
@@ -1572,6 +1869,10 @@ body {
 
   <div class="testimonials-grid">
     <div class="tcard reveal">
+      <div style="position:relative;overflow:hidden;margin:-2.25rem -2.25rem 1.75rem;">
+        <img class="tcard-result" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80&fit=crop&crop=center" alt="Resultado facetas de resina — Juliana">
+        <span class="tcard-result-label">Resultado Real</span>
+      </div>
       <div class="tcard-stars">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1584,12 +1885,16 @@ body {
         <div class="tcard-avatar">J</div>
         <div>
           <div class="tcard-name">Juliana R., 28 anos</div>
-          <div class="tcard-detail">Facetas de Resina · Suzano</div>
+          <div class="tcard-detail">Facetas de Resina · Suzano — SP</div>
         </div>
       </div>
     </div>
 
     <div class="tcard reveal">
+      <div style="position:relative;overflow:hidden;margin:-2.25rem -2.25rem 1.75rem;">
+        <img class="tcard-result" src="https://images.unsplash.com/photo-1588776814546-1ffedbe4b9b0?w=600&q=80&fit=crop&crop=center" alt="Resultado facetas de porcelana — Carlos">
+        <span class="tcard-result-label">Resultado Real</span>
+      </div>
       <div class="tcard-stars">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1602,12 +1907,16 @@ body {
         <div class="tcard-avatar">C</div>
         <div>
           <div class="tcard-name">Carlos M., 35 anos</div>
-          <div class="tcard-detail">Facetas de Porcelana · São Paulo</div>
+          <div class="tcard-detail">Facetas de Porcelana · Itaquaquecetuba — SP</div>
         </div>
       </div>
     </div>
 
     <div class="tcard reveal">
+      <div style="position:relative;overflow:hidden;margin:-2.25rem -2.25rem 1.75rem;">
+        <img class="tcard-result" src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&fit=crop&crop=center" alt="Resultado facetas de porcelana — Thaís">
+        <span class="tcard-result-label">Resultado Real</span>
+      </div>
       <div class="tcard-stars">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1620,7 +1929,7 @@ body {
         <div class="tcard-avatar">T</div>
         <div>
           <div class="tcard-name">Thaís O., 31 anos</div>
-          <div class="tcard-detail">Facetas de Porcelana · Mogi das Cruzes</div>
+          <div class="tcard-detail">Facetas de Porcelana · Mogi das Cruzes — SP</div>
         </div>
       </div>
     </div>
@@ -1661,7 +1970,8 @@ body {
       <a href="tel:+5511999999999" class="btn-outline">Ligar Agora</a>
     </div>
 
-    <p class="urgency-fine">Atendimento Seg–Sáb · 8h às 20h · Rua Portugal Freixo, 242 — Suzano, SP</p>
+    <p class="urgency-fine">Atendimento Seg–Sáb · 8h às 20h · Rua Portugal Freixo, 242, Sala 65 — Suzano, SP<br>
+    <span style="font-size:0.58rem;opacity:0.7;">Atendemos pacientes de Suzano, Mogi das Cruzes, Poá, Itaquaquecetuba e Ferraz de Vasconcelos</span></p>
   </div>
 
 </section>
@@ -1753,7 +2063,7 @@ body {
       <a href="tel:+5511999999999" class="btn-outline">Ligar: (11) 9 9999-9999</a>
     </div>
 
-    <p class="final-cta-note reveal">Avaliação gratuita · Sem compromisso · Suzano, SP</p>
+    <p class="final-cta-note reveal">Avaliação gratuita · Sem compromisso · Referência no Alto Tietê</p>
   </div>
 
 </section>
@@ -1767,7 +2077,7 @@ body {
     <a href="#tipos">Resina vs Porcelana</a>
     <a href="#agendar">Agendar</a>
   </div>
-  <span class="footer-mini-copy">© 2025 Clínica Carassini · CRO-SP 000000</span>
+  <span class="footer-mini-copy">© 2025 Clínica Carassini · Referência em Facetas no Alto Tietê · CRO-SP 000000</span>
 </footer>
 
 <script>
