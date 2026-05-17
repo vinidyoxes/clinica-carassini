@@ -1419,6 +1419,205 @@ body {
   .doctor-img-frame::before,
   .doctor-img-frame::after { display: none; }
 }
+
+/* ─── BLOCO VALOR vs PREÇO ─── */
+.value-section {
+  padding: 6rem var(--pad-x);
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-section-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
+}
+
+.value-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.value-left { }
+
+.value-left .lead {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* comparativo custo do adiamento */
+.cost-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.cost-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: rgba(201,168,76,0.03);
+  border: 0.5px solid rgba(201,168,76,0.1);
+  gap: 1rem;
+  transition: border-color 0.3s;
+}
+
+.cost-row:hover { border-color: rgba(201,168,76,0.3); }
+
+.cost-row-label {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1.4;
+}
+
+.cost-row-label span {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--gray);
+  margin-top: 0.15rem;
+}
+
+.cost-row-value {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 200;
+  color: var(--gray);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.cost-row.highlight {
+  border-color: rgba(201,168,76,0.45);
+  background: rgba(201,168,76,0.06);
+}
+
+.cost-row.highlight .cost-row-label { color: var(--white); }
+.cost-row.highlight .cost-row-value { color: var(--gold); }
+
+.cost-disclaimer {
+  font-size: 0.65rem;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* card de pagamento */
+.value-right { }
+
+.payment-card {
+  border: 0.5px solid rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.03);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+}
+
+.payment-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.payment-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 200;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.payment-headline em {
+  font-style: normal;
+  font-weight: 100;
+  color: var(--gold);
+}
+
+.payment-sub {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.payment-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.payment-perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.payment-perk-icon {
+  width: 1.75rem; height: 1.75rem;
+  border: 0.5px solid rgba(201,168,76,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.payment-perk-icon svg {
+  width: 0.8rem; height: 0.8rem;
+  stroke: var(--gold); fill: none;
+  stroke-width: 2;
+}
+
+.payment-perk-text {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1.5;
+}
+
+.payment-perk-text strong {
+  display: block;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.1rem;
+  font-size: 0.82rem;
+}
+
+.payment-cta-note {
+  font-size: 0.65rem;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .value-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1462,7 +1661,7 @@ body {
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow">Referência em Facetas no Alto Tietê</div>
+    <div class="eyebrow">Referência em Facetas em <span class="city-target">Suzano</span></div>
 
     <h1 class="hero-title">
       Você não precisa<br>
@@ -1471,7 +1670,7 @@ body {
     </h1>
 
     <p class="hero-subtitle">
-      A clínica líder em facetas de Resina e Porcelana em Suzano, Mogi, Poá, Itaquaquecetuba e Ferraz. Tecnologia de ponta, procedimentos indolores e resultado que você aprova antes de fazer.
+      A clínica líder em facetas de Resina e Porcelana em <span class="city-target">Suzano</span>. Tecnologia de ponta, procedimentos indolores e resultado que você aprova antes de fazer.
     </p>
 
     <div class="hero-urgency">
@@ -1490,7 +1689,7 @@ body {
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Referência no Alto Tietê
+        Referência no <span class="city-target">Suzano</span>
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
@@ -1597,7 +1796,7 @@ body {
       <li>Sem desgaste excessivo do dente natural</li>
       <li>Resistente a manchas de café, vinho e cigarro</li>
       <li>Durabilidade de 5 a 20 anos conforme o tipo escolhido</li>
-      <li>A clínica de referência em facetas no Alto Tietê — Suzano, Mogi, Poá, Itaquaquecetuba e Ferraz</li>
+      <li>A clínica de referência em facetas em <span class="city-target">Suzano</span> e região</li>
     </ul>
 
     <a href="#agendar" class="btn-gold"><span>Quero Avaliar Meu Caso</span></a>
@@ -1743,7 +1942,7 @@ body {
     <div class="pstep reveal">
       <div class="pstep-dot">01</div>
       <h3>Avaliação Gratuita</h3>
-      <p>Consulta completa com escaneamento digital. Você já sai sabendo se é candidato e qual tipo de faceta combina com seu caso.</p>
+      <p>Consulta completa com escaneamento digital. Você já sai sabendo se as lentes são pra você e qual tipo combina com o seu caso.</p>
     </div>
     <div class="pstep reveal">
       <div class="pstep-dot">02</div>
@@ -1766,7 +1965,7 @@ body {
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <p>
       <strong>Sua segurança em primeiro lugar.</strong>
-      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em facetas de referência no Alto Tietê. Com mais de 10 anos de experiência e mais de 2.800 casos, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
+      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em facetas de referência em <span class="city-target">Suzano</span> e no Alto Tietê. Com mais de 10 anos de experiência e mais de 2.800 casos, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
     </p>
   </div>
 
@@ -1824,7 +2023,7 @@ body {
     </p>
 
     <p class="doctor-story">
-      Foi esse incômodo que o levou a fundar a <strong>Clínica Carassini</strong>, em Suzano — com uma missão clara: oferecer procedimentos menos invasivos, indolores e com a mais alta tecnologia disponível. Hoje, é a clínica de referência em facetas dentais em toda a região do <em>Alto Tietê</em>, atendendo pacientes de Suzano, Mogi das Cruzes, Poá, Itaquaquecetuba e Ferraz de Vasconcelos.
+      Foi esse incômodo que o levou a fundar a <strong>Clínica Carassini</strong>, em Suzano — com uma missão clara: oferecer procedimentos menos invasivos, indolores e com a mais alta tecnologia disponível. Hoje, é a clínica de referência em facetas dentais em <span class="city-target">Suzano</span> e em toda a região do Alto Tietê.
     </p>
 
     <div class="doctor-values">
@@ -1939,7 +2138,143 @@ body {
 <div class="gold-line"></div>
 
 <!-- ═══════════════════════════════
-     7. URGÊNCIA / OFERTA
+     8. VALOR vs PREÇO — OBJEÇÃO
+═══════════════════════════════ -->
+<section class="value-section">
+
+  <div class="value-section-bg" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+      <defs>
+        <pattern id="vgrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M30 4 L56 30 L30 56 L4 30 Z" fill="none" stroke="rgba(201,168,76,0.065)" stroke-width="0.7"/>
+        </pattern>
+        <radialGradient id="vfade" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+        <mask id="vmask"><rect width="100%" height="100%" fill="url(#vfade)"/></mask>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#vgrid)" mask="url(#vmask)"/>
+      <circle cx="100%" cy="0" r="320" fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="0.8"/>
+      <circle cx="100%" cy="0" r="500" fill="none" stroke="rgba(201,168,76,0.04)" stroke-width="0.6"/>
+    </svg>
+    <div style="position:absolute;bottom:-15%;left:-5%;width:50%;height:65%;background:radial-gradient(ellipse at center,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;"></div>
+  </div>
+
+  <div class="value-inner">
+
+    <div class="value-left reveal">
+      <div class="eyebrow">Quanto custa não fazer?</div>
+      <h2 class="section-title">
+        O preço de continuar<br>
+        <em>do jeito que está</em>
+      </h2>
+      <p class="lead">
+        A gente entende que o investimento pesa. Mas olha quanto você já gastou tentando contornar o problema — sem resolver de verdade.
+      </p>
+
+      <div class="cost-compare">
+        <div class="cost-row">
+          <div class="cost-row-label">
+            Clareamentos caseiros por ano
+            <span>Kits, géis, tiras — que desbotam em meses</span>
+          </div>
+          <div class="cost-row-value">R$ 300–600/ano</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-row-label">
+            Consultas de retoque e polimento
+            <span>Sem resolver a causa real da insatisfação</span>
+          </div>
+          <div class="cost-row-value">R$ 150–400/vez</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-row-label">
+            Anos adiando — sem confiança no sorriso
+            <span>Fotos evitadas, oportunidades perdidas, autoestima abalada</span>
+          </div>
+          <div class="cost-row-value">Incalculável</div>
+        </div>
+        <div class="cost-row highlight">
+          <div class="cost-row-label">
+            Facetas na Clínica Carassini
+            <span>Resultado definitivo, de 5 a 20 anos de durabilidade</span>
+          </div>
+          <div class="cost-row-value">até 10x sem juros</div>
+        </div>
+      </div>
+
+      <p class="cost-disclaimer">
+        * Valores de referência para fins de comparação. O orçamento exato é apresentado na consulta gratuita, sem compromisso.
+      </p>
+    </div>
+
+    <div class="value-right reveal">
+      <div class="payment-card">
+        <div class="payment-tag">Condições de Pagamento</div>
+
+        <h3 class="payment-headline">
+          Em até <em>10x sem juros</em><br>no cartão
+        </h3>
+
+        <p class="payment-sub">
+          Sem entrada, sem burocracia, sem surpresa. Você parcela o investimento e sai com o sorriso pronto — enquanto ainda está pagando, o resultado já está na sua vida.
+        </p>
+
+        <div class="payment-perks">
+          <div class="payment-perk">
+            <div class="payment-perk-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="payment-perk-text">
+              <strong>10x sem juros no cartão</strong>
+              Crédito, débito ou PIX — você escolhe como pagar
+            </div>
+          </div>
+          <div class="payment-perk">
+            <div class="payment-perk-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="payment-perk-text">
+              <strong>Sem entrada obrigatória</strong>
+              Não precisa desembolsar nada antes de começar
+            </div>
+          </div>
+          <div class="payment-perk">
+            <div class="payment-perk-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="payment-perk-text">
+              <strong>Orçamento na consulta gratuita</strong>
+              Você sabe o valor exato antes de decidir qualquer coisa
+            </div>
+          </div>
+          <div class="payment-perk">
+            <div class="payment-perk-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="payment-perk-text">
+              <strong>Sem compromisso na avaliação</strong>
+              Conhecer as condições não te obriga a fechar
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20as%20condições%20de%20pagamento%20das%20facetas." class="btn-gold" style="width:100%;justify-content:center;" target="_blank">
+          <span>Ver Condições pelo WhatsApp</span>
+        </a>
+
+        <p class="payment-cta-note">Avaliação gratuita · Sem entrada · 10x sem juros</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══════════════════════════════
+     9. URGÊNCIA / OFERTA
 ═══════════════════════════════ -->
 <section class="urgency-section" id="agendar">
 
@@ -1959,7 +2294,7 @@ body {
     <div class="urgency-bullets reveal">
       <div class="ubullet">Avaliação completa gratuita</div>
       <div class="ubullet">Planejamento digital do sorriso</div>
-      <div class="ubullet">Sem fidelidade ou compromisso</div>
+      <div class="ubullet">10x sem juros · sem entrada</div>
       <div class="ubullet">Vagas limitadas por semana</div>
     </div>
 
@@ -1971,7 +2306,7 @@ body {
     </div>
 
     <p class="urgency-fine">Atendimento Seg–Sáb · 8h às 20h · Rua Portugal Freixo, 242, Sala 65 — Suzano, SP<br>
-    <span style="font-size:0.58rem;opacity:0.7;">Atendemos pacientes de Suzano, Mogi das Cruzes, Poá, Itaquaquecetuba e Ferraz de Vasconcelos</span></p>
+    <span style="font-size:0.58rem;opacity:0.7;">Atendendo pacientes de <span class="city-target">Suzano</span> e toda a região do Alto Tietê</span></p>
   </div>
 
 </section>
@@ -2004,15 +2339,15 @@ body {
     </div>
     <div class="faq-item reveal">
       <p class="faq-q">Posso parcelar? Qual o valor?</p>
-      <p class="faq-a">Sim. Trabalhamos com parcelamento facilitado e consultores de pagamento. O valor varia conforme o número de dentes e o tipo de material. <strong>Por isso a avaliação existe</strong> — na consulta gratuita você recebe um orçamento detalhado e transparente, sem surpresas.</p>
+      <p class="faq-a">Sim — em <strong>até 10x sem juros no cartão, sem entrada</strong>. O valor total varia conforme o número de dentes e o tipo escolhido (resina ou porcelana). Na consulta gratuita você recebe o orçamento exato e transparente — e só decide depois, sem pressão.</p>
     </div>
     <div class="faq-item reveal">
       <p class="faq-q">Quanto tempo dura o tratamento todo?</p>
       <p class="faq-a">Da avaliação ao sorriso pronto, em média <strong>2 a 4 semanas</strong> para facetas de porcelana (que passam por laboratório) e apenas <strong>1 consulta</strong> para as de resina. Tudo depende do número de dentes e da complexidade do seu caso.</p>
     </div>
     <div class="faq-item reveal">
-      <p class="faq-q">Qualquer pessoa pode fazer facetas?</p>
-      <p class="faq-a">A maioria dos adultos é candidata, mas é preciso avaliar a saúde bucal geral. <strong>Cáries, gengiva inflamada ou bruxismo</strong> precisam ser tratados antes. Isso é exatamente o que descobrimos na avaliação gratuita — sem compromisso.</p>
+      <p class="faq-q">Lentes é pra mim?</p>
+      <p class="faq-a">Para a maioria dos adultos, <strong>sim</strong>. Mas é preciso avaliar a saúde bucal primeiro. <strong>Cáries, gengiva inflamada ou bruxismo</strong> precisam ser tratados antes. É exatamente isso que a gente descobre na avaliação gratuita — sem compromisso e sem pressão.</p>
     </div>
   </div>
 </section>
@@ -2053,7 +2388,7 @@ body {
       <em>E se for hoje?</em>
     </h2>
     <p class="lead reveal">
-      A avaliação é gratuita, sem compromisso e sem pressão. Você descobre se é candidato, vê o resultado antes de decidir — e só avança se quiser.
+      A avaliação é gratuita, sem compromisso e sem pressão. Você descobre se as lentes são pra você, vê o resultado antes de decidir — e só avança se quiser.
     </p>
 
     <div class="final-ctas reveal">
@@ -2063,7 +2398,7 @@ body {
       <a href="tel:+5511999999999" class="btn-outline">Ligar: (11) 9 9999-9999</a>
     </div>
 
-    <p class="final-cta-note reveal">Avaliação gratuita · Sem compromisso · Referência no Alto Tietê</p>
+    <p class="final-cta-note reveal">Avaliação gratuita · Sem compromisso · Referência em <span class="city-target">Suzano</span></p>
   </div>
 
 </section>
@@ -2077,10 +2412,76 @@ body {
     <a href="#tipos">Resina vs Porcelana</a>
     <a href="#agendar">Agendar</a>
   </div>
-  <span class="footer-mini-copy">© 2025 Clínica Carassini · Referência em Facetas no Alto Tietê · CRO-SP 000000</span>
+  <span class="footer-mini-copy">© 2025 Clínica Carassini · Referência em Facetas em <span class="city-target">Suzano</span> · CRO-SP 000000</span>
 </footer>
 
 <script>
+  /* ── Cidade dinâmica por parâmetro de URL ──
+   *
+   * Parâmetros aceitos (case-insensitive):
+   *   ?cidade=Mogi          → usa "Mogi das Cruzes"
+   *   ?city=Poá             → aceita inglês também
+   *   ?location=Ferraz      → aceita location
+   *
+   * Exemplos de URL:
+   *   /facetas.html?cidade=Mogi
+   *   /facetas.html?cidade=Itaquaquecetuba
+   *   /facetas.html?cidade=Ferraz
+   *   /facetas.html?cidade=Poá
+   *   /facetas.html                          → fallback: Suzano
+   *
+   * UTM compatível — pode vir junto com utm_source, utm_campaign etc.
+   */
+
+  (function () {
+    const FALLBACK = 'Suzano';
+
+    /* mapa de normalização: termo digitado na URL → nome exibido */
+    const CITY_MAP = {
+      'suzano':           'Suzano',
+      'mogi':             'Mogi das Cruzes',
+      'mogi das cruzes':  'Mogi das Cruzes',
+      'mogidascruzes':    'Mogi das Cruzes',
+      'poa':              'Poá',
+      'poá':              'Poá',
+      'itaquaquecetuba':  'Itaquaquecetuba',
+      'itaquá':           'Itaquaquecetuba',
+      'itaqua':           'Itaquaquecetuba',
+      'ferraz':           'Ferraz de Vasconcelos',
+      'ferraz de vasconcelos': 'Ferraz de Vasconcelos',
+    };
+
+    function getCity() {
+      const params = new URLSearchParams(window.location.search);
+      const raw = (
+        params.get('cidade') ||
+        params.get('city')   ||
+        params.get('location')
+      );
+      if (!raw) return FALLBACK;
+      const normalized = raw.trim().toLowerCase();
+      return CITY_MAP[normalized] || raw.trim() || FALLBACK;
+    }
+
+    const city = getCity();
+
+    /* injeta em todos os elementos com a classe city-target */
+    document.querySelectorAll('.city-target').forEach(el => {
+      el.textContent = city;
+    });
+
+    /* atualiza title e meta description com a cidade */
+    document.title = `Facetas Dentais em ${city} — Clínica Carassini`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        `Transforme seu sorriso com Facetas de Resina ou Porcelana em ${city}. Avaliação gratuita na Clínica Carassini.`
+      );
+    }
+  })();
+
+  /* ── Scroll reveal ── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
