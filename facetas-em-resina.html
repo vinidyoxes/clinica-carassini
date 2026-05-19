@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T9ZN7ZNM');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MHFW3FS2Q8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MHFW3FS2Q8', {
+    send_page_view: true
+  });
+</script>
+<!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facetas de Resina em 1 Consulta — Clínica Carassini | Suzano, SP</title>
@@ -83,6 +101,8 @@ body {
 }
 
 .topbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.topbar-cta .cta-mobile { display: none; }
 
 /* ─── UTILITÁRIOS ─── */
 .gold-line {
@@ -1209,6 +1229,11 @@ body {
   .final-ctas .btn-gold,
   .final-ctas .btn-outline { justify-content: center; }
   .process-steps { grid-template-columns: 1fr; }
+
+  /* CTA do navbar mais natural no mobile */
+  .topbar-cta { font-size: 0.6rem; letter-spacing: 0.12em; padding: 0.6rem 1.1rem; }
+  .topbar-cta .cta-desktop { display: none; }
+  .topbar-cta .cta-mobile  { display: inline; }
 }
 
 /* ─── SEÇÃO QUEM SOU EU ─── */
@@ -1622,6 +1647,11 @@ body {
 </head>
 <body>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9ZN7ZNM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20as%20facetas." class="wa-float" aria-label="Falar no WhatsApp" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.554 4.103 1.523 5.824L.057 23.852a.5.5 0 00.61.61l6.101-1.459A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 01-4.934-1.343l-.355-.21-3.626.867.883-3.53-.23-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
@@ -1633,7 +1663,7 @@ body {
     <img class="logo-full"      src="./img/logo.png"        alt="Clínica Carassini">
     <img class="logo-pictogram" src="./img/pictogram.png"   alt="Clínica Carassini">
   </a>
-  <a href="#agendar" class="topbar-cta">Agendar em 1 Consulta</a>
+  <a href="#agendar" class="topbar-cta"><span class="cta-desktop">Agendar Avaliação</span><span class="cta-mobile">Agendar Avaliação</span></a>
 </header>
 
 <!-- ═══════════════════════════════
@@ -1689,7 +1719,7 @@ body {
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Referência no <span class="city-target">Suzano</span>
+        Referência em <span class="city-target">Suzano</span>
       </div>
       <div class="htrust-item">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
@@ -1701,8 +1731,8 @@ body {
   <div class="hero-visual">
     <img src="./img/rudson.jpeg" alt="Sorriso com facetas dentais">
     <div class="hero-float-badge">
-      <div class="float-badge-num">+2.800</div>
-      <div class="float-badge-label">Sorrisos Transformados</div>
+      <div class="float-badge-num">+5.000</div>
+      <div class="float-badge-label">Lentes Entregues</div>
     </div>
   </div>
 
@@ -1865,7 +1895,7 @@ body {
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <p>
       <strong>Sua segurança em primeiro lugar.</strong>
-      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em facetas de referência em <span class="city-target">Suzano</span> e no Alto Tietê. Com mais de 10 anos de experiência e mais de 2.800 casos, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
+      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em facetas de referência em <span class="city-target">Suzano</span> e no Alto Tietê. Com mais de 10 anos de experiência e mais de 5.000 lentes entregues, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
     </p>
   </div>
 
@@ -1915,11 +1945,11 @@ body {
     </h2>
 
     <p class="doctor-story">
-      <strong>De família de médicos</strong>, o Dr. Rudson Carassini cresceu vendo de perto o impacto que um bom profissional de saúde causa na vida das pessoas. Essa herança moldou não só a escolha da carreira — mas a forma como ele a exerce.
+      <strong>De família de doutores</strong>, o Dr. Rudson Carassini cresceu vendo de perto o impacto que um bom profissional de saúde causa na vida das pessoas. Essa herança moldou não só a escolha da carreira — mas a forma como ele a exerce.
     </p>
 
     <p class="doctor-story">
-      Formado pela <strong>Universidade de Mogi das Cruzes</strong>, acumulou anos de experiência atendendo em diferentes consultórios — e foi nesse percurso que identificou algo que o incomodava profundamente: <em>pacientes que evitavam tratamentos por medo da dor e do desconforto.</em>
+      Formado há <strong>3 anos pela Universidade de Mogi das Cruzes</strong>, concentrou sua trajetória desde cedo na área de estética dental — e foi nesse percurso que identificou algo que o incomodava profundamente: <em>pacientes que evitavam tratamentos por medo da dor e do desconforto.</em>
     </p>
 
     <p class="doctor-story">
@@ -1928,12 +1958,12 @@ body {
 
     <div class="doctor-values">
       <div class="dvalue">
-        <div class="dvalue-num">10+</div>
-        <div class="dvalue-label">Anos de Experiência</div>
+        <div class="dvalue-num">3</div>
+        <div class="dvalue-label">Anos de Formado</div>
       </div>
       <div class="dvalue">
-        <div class="dvalue-num">2.8k</div>
-        <div class="dvalue-label">Pacientes Atendidos</div>
+        <div class="dvalue-num">5k+</div>
+        <div class="dvalue-label">Lentes Entregues</div>
       </div>
       <div class="dvalue">
         <div class="dvalue-num">UMC</div>
@@ -2391,6 +2421,171 @@ body {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   RASTREAMENTO DE CONVERSÕES — Google Analytics GA4
+   Clínica Carassini · Facetas de Resina
+   ══════════════════════════════════════════════════════════════ */
+
+(function () {
+  /* ── Utilitário: dispara evento GA4 ── */
+  function trackEvent(eventName, params) {
+    if (typeof gtag !== 'function') return;
+    gtag('event', eventName, Object.assign({ send_to: 'G-MHFW3FS2Q8' }, params || {}));
+  }
+
+  /* ── Utilitário: dispara evento GTM via dataLayer ── */
+  function pushDL(obj) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(obj);
+  }
+
+  /* ─────────────────────────────────────────
+     1. SCROLL DEPTH (25 / 50 / 75 / 90 %)
+  ───────────────────────────────────────── */
+  var scrollMilestones = { 25: false, 50: false, 75: false, 90: false };
+  function onScroll() {
+    var scrolled = (window.scrollY || window.pageYOffset);
+    var total    = document.documentElement.scrollHeight - window.innerHeight;
+    var pct      = total > 0 ? Math.round((scrolled / total) * 100) : 0;
+    [25, 50, 75, 90].forEach(function (m) {
+      if (!scrollMilestones[m] && pct >= m) {
+        scrollMilestones[m] = true;
+        trackEvent('scroll_depth', { depth_percentage: m, page_section: 'facetas' });
+        pushDL({ event: 'scroll_depth', depth_percentage: m });
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ─────────────────────────────────────────
+     2. CLIQUES EM BOTÕES E CTAs
+  ───────────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a, button');
+    if (!el) return;
+
+    var href  = el.getAttribute('href') || '';
+    var text  = (el.innerText || '').trim().substring(0, 80);
+    var label = el.dataset.trackLabel || text;
+
+    /* WhatsApp */
+    if (href.includes('wa.me')) {
+      trackEvent('whatsapp_click', { button_text: label, location: getSectionName(el) });
+      pushDL({ event: 'whatsapp_click', button_text: label });
+    }
+
+    /* Telefone */
+    if (href.startsWith('tel:')) {
+      trackEvent('phone_click', { button_text: label, location: getSectionName(el) });
+      pushDL({ event: 'phone_click', button_text: label });
+    }
+
+    /* CTAs dourados (btn-gold / btn-outline) */
+    if (el.classList.contains('btn-gold') || el.classList.contains('btn-outline') || el.classList.contains('topbar-cta')) {
+      trackEvent('cta_click', {
+        button_text: label,
+        button_style: el.classList.contains('btn-gold') ? 'gold' : el.classList.contains('topbar-cta') ? 'navbar' : 'outline',
+        location: getSectionName(el)
+      });
+      pushDL({ event: 'cta_click', button_text: label, location: getSectionName(el) });
+    }
+
+    /* FAQ items */
+    if (el.closest('.faq-item')) {
+      var faqQ = el.closest('.faq-item').querySelector('.faq-q');
+      trackEvent('faq_click', { question: faqQ ? faqQ.innerText.trim() : 'unknown' });
+    }
+
+    /* WhatsApp float */
+    if (el.classList.contains('wa-float')) {
+      trackEvent('whatsapp_float_click', { location: 'floating_button' });
+      pushDL({ event: 'whatsapp_float_click' });
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     3. SEÇÕES VISTAS (IntersectionObserver)
+  ───────────────────────────────────────── */
+  var sectionsSeen = {};
+  var sectionMap = {
+    'hero':          'Hero',
+    'o-que-sao':     'O Que São Facetas',
+    'como-funciona': 'Como Funciona',
+    'doutor':        'Sobre o Doutor',
+    'agendar':       'Urgência / Agendar',
+  };
+  var secObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.id;
+      if (!id || sectionsSeen[id]) return;
+      sectionsSeen[id] = true;
+      var name = sectionMap[id] || id;
+      trackEvent('section_view', { section_id: id, section_name: name });
+      pushDL({ event: 'section_view', section_id: id, section_name: name });
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('section[id]').forEach(function (s) {
+    secObserver.observe(s);
+  });
+
+  /* ─────────────────────────────────────────
+     4. TEMPO NA PÁGINA (30s / 60s / 120s)
+  ───────────────────────────────────────── */
+  var timers = [30, 60, 120];
+  timers.forEach(function (sec) {
+    setTimeout(function () {
+      trackEvent('time_on_page', { seconds: sec });
+      pushDL({ event: 'time_on_page', seconds: sec });
+    }, sec * 1000);
+  });
+
+  /* ─────────────────────────────────────────
+     5. SAÍDA DA PÁGINA (beforeunload)
+  ───────────────────────────────────────── */
+  window.addEventListener('beforeunload', function () {
+    var scrolled = Math.round(
+      ((window.scrollY || window.pageYOffset) /
+       Math.max(1, document.documentElement.scrollHeight - window.innerHeight)) * 100
+    );
+    navigator.sendBeacon && navigator.sendBeacon(
+      'https://www.google-analytics.com/collect', ''
+    );
+    trackEvent('page_exit', { scroll_depth_on_exit: scrolled });
+  });
+
+  /* ─────────────────────────────────────────
+     6. HELPER: identifica seção do clique
+  ───────────────────────────────────────── */
+  function getSectionName(el) {
+    var sec = el.closest('section');
+    if (sec && sec.id) return sectionMap[sec.id] || sec.id;
+    if (el.closest('header')) return 'Navbar';
+    if (el.closest('footer')) return 'Footer';
+    return 'Unknown';
+  }
+
+  /* ─────────────────────────────────────────
+     7. UTM SOURCE no dataLayer (para GTM)
+  ───────────────────────────────────────── */
+  (function () {
+    var p = new URLSearchParams(window.location.search);
+    var utm = {
+      utm_source:   p.get('utm_source')   || '(none)',
+      utm_medium:   p.get('utm_medium')   || '(none)',
+      utm_campaign: p.get('utm_campaign') || '(none)',
+      utm_content:  p.get('utm_content')  || '(none)',
+      utm_term:     p.get('utm_term')     || '(none)',
+      cidade:       p.get('cidade') || p.get('city') || p.get('location') || 'Suzano',
+    };
+    pushDL({ event: 'page_utm', ...utm });
+    gtag && trackEvent('page_view_utm', utm);
+  })();
+
+})();
 </script>
 </body>
 </html>
