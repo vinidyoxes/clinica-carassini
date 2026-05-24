@@ -267,12 +267,118 @@ body {
   margin-bottom: 1.75rem;
 }
 
+/* ─── BOLD NOS ELEMENTOS DOURADOS ─── */
+.eyebrow {
+  font-weight: 700;
+}
+
 .hero-title em {
   font-style: normal;
-  font-weight: 100;
+  font-weight: 700;
   color: var(--gold);
   display: block;
   letter-spacing: 0.07em;
+}
+
+.section-title em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.city-target {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.payment-headline em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.urgency-title em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.cta-title em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.doctor-story em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* banner exclusivo mobile — oculto no desktop */
+.hero-mobile-banner { display: none; }
+
+.hero-mobile-banner img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-mobile-badge {
+  position: absolute;
+  bottom: 0.85rem; left: 0.85rem;
+  z-index: 3;
+  background: rgba(10,10,10,0.82);
+  backdrop-filter: blur(10px);
+  border: 0.5px solid rgba(201,168,76,0.35);
+  padding: 0.75rem 1rem;
+}
+
+/* ─── HERO ANIMAÇÕES DE ENTRADA ─── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-content .eyebrow {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.1s;
+}
+
+.hero-title {
+  animation: heroFadeUp 0.8s ease both;
+  animation-delay: 0.25s;
+}
+
+.hero-subtitle {
+  animation: heroFadeUp 0.8s ease both;
+  animation-delay: 0.42s;
+}
+
+.hero-urgency {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-ctas {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.68s;
+}
+
+.hero-trust {
+  animation: heroFadeIn 0.9s ease both;
+  animation-delay: 0.85s;
+}
+
+.hero-visual {
+  animation: heroFadeIn 1s ease both;
+  animation-delay: 0.3s;
 }
 
 .hero-subtitle {
@@ -1202,10 +1308,37 @@ body {
   .topbar-logo .logo-full      { display: none; }
   .topbar-logo .logo-pictogram { display: block; height: 2.25rem; width: auto; }
 
-  .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 4rem; }
-  .hero-visual { display: none; }
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    min-height: auto;
+    padding-bottom: 0;
+  }
   .hero-content { padding: 3rem 5%; }
   .hero-trust { gap: 1.25rem; }
+
+  /* ocultar hero-visual no mobile */
+  .hero-visual { display: none; }
+
+  /* exibir banner mobile sem height fixo */
+  .hero-mobile-banner {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0 0;
+    overflow: hidden;
+  }
+
+  /* gradiente na base para fundir com o restante */
+  .hero-mobile-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
 
   .pain-grid { grid-template-columns: 1fr; }
 
@@ -1710,6 +1843,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <em>o seu sorriso.</em>
     </h1>
 
+    <!-- imagem visível apenas em mobile, logo abaixo do título -->
+    <div class="hero-mobile-banner">
+      <img src="./img/banner4.png" alt="Resultado real — lentes de resina Clínica Carassini">
+      <div class="hero-mobile-badge">
+        <div class="float-badge-num">+5.000</div>
+        <div class="float-badge-label">Lentes Entregues</div>
+      </div>
+    </div>
+
     <p class="hero-subtitle">
       A clínica líder em Facetas de Resina em <span class="city-target">Suzano</span>. Sorriso novo em uma única consulta — sem dor, sem espera e com resultado que você aprova antes de sair.
     </p>
@@ -1740,7 +1882,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="hero-visual">
-    <img src="./img/banner4.png" alt="Facetas dentais resultado">
+    <img src="./img/banner4.png" alt="Resultado real — lentes de resina Clínica Carassini">
     <div class="hero-float-badge">
       <div class="float-badge-num">+5.000</div>
       <div class="float-badge-label">Lentes Entregues</div>
@@ -1837,7 +1979,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>Procedimento indolor — sem desgaste excessivo do dente</li>
       <li>Reversível e reparável quando necessário</li>
       <li>Durabilidade de 3 a 5 anos com cuidados simples</li>
-      <li>A clínica de referência em facetas de resina em <span class="city-target">Suzano</span> e região</li>
+      <li>Referência em lentes de resina na região</li>
     </ul>
 
     <a href="#agendar" class="btn-gold"><span>Quero Avaliar Meu Caso</span></a>
