@@ -21,8 +21,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lentes em Resina em 1 Consulta — Clínica Carassini | Suzano, SP</title>
-<meta name="description" content="Transforme seu sorriso com Lentes em Resina em 1 consulta. Avaliação gratuita na Clínica Carassini, Suzano-SP.">
+<title>Lentes em Porcelana em 1 Consulta — Clínica Carassini | Suzano, SP</title>
+<meta name="description" content="Transforme seu sorriso com Lentes em Porcelana de alta resistência em 1 consulta. Avaliação gratuita na Clínica Carassini, Suzano-SP.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="./img/pictogram.png">
+<link rel="apple-touch-icon" href="./img/pictogram.png">
+
+<!-- OG -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://clinicacarassini.com.br/lentes-em-porcelana.html">
+<meta property="og:title"        content="Lentes em Porcelana em 1 Consulta — Clínica Carassini">
+<meta property="og:description"  content="Sorriso novo no mesmo dia com porcelana de alta resistência. Avaliação gratuita em Suzano, SP. 10x sem juros.">
+<meta property="og:image"        content="https://clinicacarassini.com.br/img/results/juliana.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="pt_BR">
+<meta property="og:site_name"    content="Clínica Carassini">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Lentes em Porcelana em 1 Consulta — Clínica Carassini">
+<meta name="twitter:description" content="Sorriso novo no mesmo dia com porcelana de alta resistência. Avaliação gratuita em Suzano, SP. 10x sem juros.">
+<meta name="twitter:image"       content="https://clinicacarassini.com.br/img/results/juliana.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -40,52 +59,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --gold:       #c9a84c;
   --gold-light: #e2c97e;
   --gold-dark:  #a0802e;
+  /* tons claros adicionados */
+  --surface-1:  #1e1e1e;
+  --surface-2:  #252525;
+  --surface-3:  #2e2e2e;
+  --border-light: rgba(255,255,255,0.07);
+  --text-muted:   #a0a0a0;
   --serif: 'Raleway', sans-serif;
   --sans:  'Montserrat', sans-serif;
   --nav-h: 4.5rem;
   --pad-x: 8%;
 }
 
-/* ─── BOLD NOS ELEMENTOS DOURADOS ─── */
-.eyebrow { font-weight: 700; }
-.hero-title em { font-weight: 700; }
-.section-title em { font-weight: 700; }
-.city-target { font-weight: 700; }
-.payment-headline em { font-weight: 700; }
-.urgency-title em { font-weight: 700; }
-.cta-title em { font-weight: 700; }
-.doctor-story em { font-weight: 600; }
-
-/* ─── ANIMAÇÕES DE ENTRADA DO HERO ─── */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.hero-content .eyebrow { animation: heroFadeUp 0.7s ease both; animation-delay: 0.1s; }
-.hero-title             { animation: heroFadeUp 0.8s ease both; animation-delay: 0.25s; }
-.hero-subtitle          { animation: heroFadeUp 0.8s ease both; animation-delay: 0.42s; }
-.hero-urgency           { animation: heroFadeUp 0.7s ease both; animation-delay: 0.55s; }
-.hero-ctas              { animation: heroFadeUp 0.7s ease both; animation-delay: 0.68s; }
-.hero-trust             { animation: heroFadeIn 0.9s ease both; animation-delay: 0.85s; }
-.hero-visual            { animation: heroFadeIn 1.0s ease both; animation-delay: 0.3s; }
-
-/* ─── BANNER MOBILE ─── */
-.hero-mobile-banner { display: none; }
-.hero-mobile-banner img { width: 100%; display: block; }
-.hero-mobile-badge {
-  position: absolute;
-  bottom: 0.85rem; left: 0.85rem; z-index: 3;
-  background: rgba(10,10,10,0.82);
-  backdrop-filter: blur(10px);
-  border: 0.5px solid rgba(201,168,76,0.35);
-  padding: 0.75rem 1rem;
-}
-
-
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--black);
@@ -306,12 +292,143 @@ body {
   margin-bottom: 1.75rem;
 }
 
+/* ─── TONS MAIS CLAROS NAS SEÇÕES ALTERNADAS ─── */
+.pain-section       { background: var(--surface-1); }
+.pain-card          { background: var(--surface-1); }
+.pain-card:hover    { background: var(--surface-2); }
+
+.compare-section    { background: var(--surface-1); }
+.compare-card       { background: var(--surface-2); }
+
+.testimonials-section { background: var(--surface-1); }
+.tcard              { background: var(--surface-2); }
+
+.faq-section        { background: var(--surface-1); }
+.faq-item:hover     { background: rgba(201,168,76,0.04); }
+
+.urgency-section    { background: var(--off-black); }
+
+.value-section      { background: var(--black); }
+.payment-card       { background: var(--surface-2); }
+
+.cost-row           { background: rgba(255,255,255,0.03); border-color: var(--border-light); }
+.cost-row.highlight { background: rgba(201,168,76,0.07); }
+
+.process-section    { background: var(--off-black); }
+
+.doctor-section     { background: var(--black); }
+
+.eyebrow {
+  font-weight: 700;
+}
+
 .hero-title em {
   font-style: normal;
-  font-weight: 100;
+  font-weight: 700;
   color: var(--gold);
   display: block;
   letter-spacing: 0.07em;
+}
+
+.section-title em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.city-target {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.payment-headline em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.urgency-title em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.cta-title em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.doctor-story em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* banner exclusivo mobile — oculto no desktop */
+.hero-mobile-banner { display: none; }
+
+.hero-mobile-banner img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-mobile-badge {
+  position: absolute;
+  bottom: 0.85rem; left: 0.85rem;
+  z-index: 3;
+  background: rgba(10,10,10,0.82);
+  backdrop-filter: blur(10px);
+  border: 0.5px solid rgba(201,168,76,0.35);
+  padding: 0.75rem 1rem;
+}
+
+/* ─── HERO ANIMAÇÕES DE ENTRADA ─── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-content .eyebrow {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.1s;
+}
+
+.hero-title {
+  animation: heroFadeUp 0.8s ease both;
+  animation-delay: 0.25s;
+}
+
+.hero-subtitle {
+  animation: heroFadeUp 0.8s ease both;
+  animation-delay: 0.42s;
+}
+
+.hero-urgency {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-ctas {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.68s;
+}
+
+.hero-trust {
+  animation: heroFadeIn 0.9s ease both;
+  animation-delay: 0.85s;
+}
+
+.hero-visual {
+  animation: heroFadeIn 1s ease both;
+  animation-delay: 0.3s;
 }
 
 .hero-subtitle {
@@ -1241,24 +1358,36 @@ body {
   .topbar-logo .logo-full      { display: none; }
   .topbar-logo .logo-pictogram { display: block; height: 2.25rem; width: auto; }
 
-  .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 0; }
-  .hero-visual { display: none; }
-  .hero-content { padding: 3rem 5% 2rem; }
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    min-height: auto;
+    padding-bottom: 0;
+  }
+  .hero-content { padding: 3rem 5%; }
   .hero-trust { gap: 1.25rem; }
 
-  /* banner mobile ativo */
+  /* ocultar hero-visual no mobile */
+  .hero-visual { display: none; }
+
+  /* exibir banner mobile sem height fixo */
   .hero-mobile-banner {
     display: block;
     position: relative;
+    width: 100%;
+    margin: 1.5rem 0 0;
     overflow: hidden;
   }
 
+  /* gradiente na base para fundir com o restante */
   .hero-mobile-banner::after {
     content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
     height: 40%;
-    background: linear-gradient(to top, var(--black), transparent);
-    pointer-events: none; z-index: 2;
+    background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
   }
 
   .pain-grid { grid-template-columns: 1fr; }
@@ -1756,7 +1885,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow">Lentes em Resina em <span class="city-target">Suzano</span></div>
+    <div class="eyebrow">Lentes em Porcelana em <span class="city-target">Suzano</span></div>
 
     <h1 class="hero-title">
       Você não precisa<br>
@@ -1764,9 +1893,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <em>o seu sorriso.</em>
     </h1>
 
-    <!-- banner visível apenas em mobile, abaixo do título -->
+    <!-- imagem visível apenas em mobile, logo abaixo do título -->
     <div class="hero-mobile-banner">
-      <img src="./img/banner4.png" alt="Resultado real — lentes em resina Clínica Carassini">
+      <img src="./img/banner4.png" alt="Resultado real — lentes de resina Clínica Carassini">
       <div class="hero-mobile-badge">
         <div class="float-badge-num">+5.000</div>
         <div class="float-badge-label">Lentes Entregues</div>
@@ -1774,7 +1903,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <p class="hero-subtitle">
-      A clínica líder em Lentes em Resina em <span class="city-target">Suzano</span>. Sorriso novo em uma única consulta — sem dor, sem espera e com resultado que você aprova antes de sair.
+      A clínica líder em Lentes em Porcelana em <span class="city-target">Suzano</span>. Sorriso novo em uma única consulta — sem dor, sem espera e com resultado que você aprova antes de sair.
     </p>
 
     <div class="hero-urgency">
@@ -1803,7 +1932,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="hero-visual">
-    <img src="./img/banner2.png" alt="Facetas dentais resultado">
+    <img src="./img/banner4.png" alt="Resultado real — lentes de resina Clínica Carassini">
     <div class="hero-float-badge">
       <div class="float-badge-num">+5.000</div>
       <div class="float-badge-label">Lentes Entregues</div>
@@ -1866,7 +1995,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="gold-line"></div>
 
 <!-- ═══════════════════════════════
-     3. SOLUÇÃO — O QUE SÃO FACETAS
+     3. SOLUÇÃO — O QUE SÃO LENTES EM RESINA
 ═══════════════════════════════ -->
 <section class="solution-section" id="o-que-sao">
 
@@ -1888,7 +2017,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <em>quem você é</em>
     </h2>
     <p class="lead">
-      As Lentes em Resina são lâminas ultrafinas aplicadas diretamente sobre os dentes que corrigem cor, formato, tamanho e pequenos espaços — tudo em <strong style="color:var(--white);">uma única consulta</strong>, sem laboratório, sem espera e sem dor.
+      As Lentes em Porcelana são lâminas de cerâmica de alta resistência, fresadas digitalmente e aplicadas sobre os dentes para corrigir cor, formato, tamanho e pequenos espaços — tudo em <strong style="color:var(--white);">uma única consulta</strong>, com tecnologia CAD/CAM, sem espera e sem dor.
     </p>
     <p class="lead" style="margin-top:0.75rem;">
       Você entra com o sorriso que te incomoda e sai no mesmo dia com o sorriso que sempre quis. Natural, bonito e com a sua cara.
@@ -1898,9 +2027,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>Sorriso novo em 1 consulta — sem esperar dias ou semanas</li>
       <li>Você aprova o resultado antes de sair da cadeira</li>
       <li>Procedimento indolor — sem desgaste excessivo do dente</li>
-      <li>Reversível e reparável quando necessário</li>
-      <li>Durabilidade de 3 a 5 anos com cuidados simples</li>
-      <li>Referência em lentes em resina na região</li>
+      <li>Alta resistência a manchas — café, vinho e cigarro não afetam</li>
+      <li>Durabilidade de 10 a 15 anos com cuidados simples</li>
+      <li>Referência em lentes de resina na região</li>
     </ul>
 
     <a href="#agendar" class="btn-gold"><span>Quero Avaliar Meu Caso</span></a>
@@ -1969,7 +2098,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <p>
       <strong>Sua segurança em primeiro lugar.</strong>
-      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em lentes em resina de referência em <span class="city-target">Suzano</span> e no Alto Tietê. Com mais de 10 anos de experiência e mais de 5.000 lentes entregues, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
+      Todo o processo é conduzido pelo Dr. Rudson Carassini, o especialista em lentes em porcelana de referência em <span class="city-target">Suzano</span> e no Alto Tietê. Com 3 anos de formado e mais de 5.000 lentes entregues, você só avança quando estiver 100% confortável e confiante com o resultado planejado.
     </p>
   </div>
 
@@ -2027,7 +2156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
 
     <p class="doctor-story">
-      Foi esse incômodo que o levou a fundar a <strong>Clínica Carassini</strong>, em Suzano — com uma missão clara: oferecer procedimentos menos invasivos, indolores e com a mais alta tecnologia disponível. Hoje, é a clínica de referência em lentes em resina em <span class="city-target">Suzano</span> e em toda a região do Alto Tietê.
+      Foi esse incômodo que o levou a fundar a <strong>Clínica Carassini</strong>, em Suzano — com uma missão clara: oferecer procedimentos menos invasivos, indolores e com a mais alta tecnologia disponível. Hoje, é a clínica de referência em lentes em porcelana em <span class="city-target">Suzano</span> e em toda a região do Alto Tietê.
     </p>
 
     <div class="doctor-values">
@@ -2073,7 +2202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="testimonials-grid">
     <div class="tcard reveal">
       <div style="position:relative;overflow:hidden;margin:-2.25rem -2.25rem 1.75rem;">
-        <img class="tcard-result" src="./img/results/juliana.png" alt="Resultado lentes em resina — Juliana">
+        <img class="tcard-result" src="./img/results/juliana.png" alt="Resultado facetas de resina — Juliana">
         <span class="tcard-result-label">Resultado Real</span>
       </div>
       <div class="tcard-stars">
@@ -2088,7 +2217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tcard-avatar">J</div>
         <div>
           <div class="tcard-name">Juliana R., 28 anos</div>
-          <div class="tcard-detail">Lentes em Resina · Suzano — SP</div>
+          <div class="tcard-detail">Lentes em Porcelana · Suzano — SP</div>
         </div>
       </div>
     </div>
@@ -2110,7 +2239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tcard-avatar">C</div>
         <div>
           <div class="tcard-name">Carlos M., 35 anos</div>
-          <div class="tcard-detail">Lentes em Resina · Itaquaquecetuba — SP</div>
+          <div class="tcard-detail">Lentes em Porcelana · Itaquaquecetuba — SP</div>
         </div>
       </div>
     </div>
@@ -2132,7 +2261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tcard-avatar">T</div>
         <div>
           <div class="tcard-name">Thaís O., 31 anos</div>
-          <div class="tcard-detail">Lentes em Resina · Mogi das Cruzes — SP</div>
+          <div class="tcard-detail">Lentes em Porcelana · Mogi das Cruzes — SP</div>
         </div>
       </div>
     </div>
@@ -2201,8 +2330,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="cost-row highlight">
           <div class="cost-row-label">
-            Lentes em Resina na Clínica Carassini
-            <span>Resultado definitivo, de 3 a 5 anos de durabilidade</span>
+            Lentes em Porcelana na Clínica Carassini
+            <span>Resultado definitivo, de 10 a 15 anos de durabilidade</span>
           </div>
           <div class="cost-row-value">até 10x sem juros</div>
         </div>
@@ -2291,7 +2420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </h2>
 
     <p class="urgency-desc reveal">
-      Com as Lentes em Resina você não precisa agendar para semanas depois. A avaliação e a aplicação acontecem na mesma consulta — e as vagas são limitadas por semana.
+      Com as Lentes em Porcelana você não precisa agendar para semanas depois. A avaliação e a aplicação acontecem na mesma consulta — e as vagas são limitadas por semana.
     </p>
 
     <div class="urgency-bullets reveal">
@@ -2334,11 +2463,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item reveal">
       <p class="faq-q">Vai ficar artificial ou com cara de feito?</p>
-      <p class="faq-a">Não, quando bem executado. As lentes em resina modernas imitam o esmalte natural — <strong>translúcidas, com textura e cor personalizadas</strong> para o seu rosto e tom de pele. O objetivo é que as pessoas percebam que você ficou mais bonito, mas não saibam exatamente por quê.</p>
+      <p class="faq-a">Não, quando bem executado. As lentes em porcelana modernas imitam o esmalte natural — <strong>translúcidas, com textura e cor personalizadas</strong> para o seu rosto e tom de pele. O objetivo é que as pessoas percebam que você ficou mais bonito, mas não saibam exatamente por quê.</p>
     </div>
     <div class="faq-item reveal">
       <p class="faq-q">Precisa arrancar ou lixar muito o dente?</p>
-      <p class="faq-a">Nas lentes em resina modernas o desgaste é <strong>mínimo ou nenhum</strong> (no caso das lentes de contato). A técnica minimamente invasiva preserva ao máximo o dente natural — muito diferente das coroas antigas que exigiam desgaste total.</p>
+      <p class="faq-a">Nas lentes em porcelana modernas o desgaste é <strong>mínimo ou nenhum</strong>. A técnica minimamente invasiva preserva ao máximo o dente natural — muito diferente das coroas antigas que exigiam desgaste total.</p>
     </div>
     <div class="faq-item reveal">
       <p class="faq-q">Posso parcelar? Qual o valor?</p>
@@ -2391,7 +2520,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <em>E se for hoje?</em>
     </h2>
     <p class="lead reveal">
-      Com as Lentes em Resina você sai com o sorriso pronto no mesmo dia. A avaliação é gratuita, sem compromisso — e tudo pode acontecer em uma única consulta.
+      Com as Lentes em Porcelana você sai com o sorriso pronto no mesmo dia. A avaliação é gratuita, sem compromisso — e tudo pode acontecer em uma única consulta.
     </p>
 
     <div class="final-ctas reveal">
@@ -2411,11 +2540,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="./img/logo.png" alt="Clínica Carassini">
   <div class="footer-mini-links">
     <a href="index.html">Site Principal</a>
-    <a href="#o-que-sao">O que são Lentes em Resina</a>
+    <a href="#o-que-sao">O que são Facetas de Resina</a>
     <a href="#como-funciona">Como Funciona</a>
     <a href="#agendar">Agendar</a>
   </div>
-  <span class="footer-mini-copy">© 2025 Clínica Carassini · Referência em Lentes em Resina em <span class="city-target">Suzano</span> · CRO-SP 000000</span>
+  <span class="footer-mini-copy">© 2025 Clínica Carassini · Referência em Lentes em Porcelana em <span class="city-target">Suzano</span> · CRO-SP 154990</span>
 </footer>
 
 <script>
@@ -2474,12 +2603,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     /* atualiza title e meta description com a cidade */
-    document.title = `Lentes em Resina em ${city} — 1 Consulta · Clínica Carassini`;
+    document.title = `Lentes em Porcelana em ${city} — 1 Consulta · Clínica Carassini`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        `Lentes em Resina em ${city}: sorriso novo em 1 consulta, sem dor, 10x sem juros. Avaliação gratuita na Clínica Carassini.`
+        `Lentes em Porcelana em ${city}: sorriso novo em 1 consulta, sem dor, 10x sem juros. Avaliação gratuita na Clínica Carassini.`
       );
     }
   })();
@@ -2499,7 +2628,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 /* ══════════════════════════════════════════════════════════════
    RASTREAMENTO DE CONVERSÕES — Google Analytics GA4
-   Clínica Carassini · Lentes em Resina
+   Clínica Carassini · Lentes em Porcelana
    ══════════════════════════════════════════════════════════════ */
 
 (function () {
@@ -2662,4 +2791,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 </body>
-</html>l
+</html>
