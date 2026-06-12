@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- OG -->
 <meta property="og:type"         content="website">
-<meta property="og:url"          content="https://clinicacarassini.com.br/lentes-em-porcelana.html">
+<meta property="og:url"          content="https://clinicacarassini.com.br/lentes-em-porcelana-light.html">
 <meta property="og:title"        content="Lentes em Porcelana em 1 Consulta — Clínica Carassini">
 <meta property="og:description"  content="Sorriso novo no mesmo dia com porcelana de alta resistência. Avaliação gratuita em Suzano, SP. 10x sem juros.">
 <meta property="og:image"        content="https://clinicacarassini.com.br/img/results/juliana.png">
@@ -43,30 +43,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Sorriso novo no mesmo dia com porcelana de alta resistência. Avaliação gratuita em Suzano, SP. 10x sem juros.">
 <meta name="twitter:image"       content="https://clinicacarassini.com.br/img/results/juliana.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --black:      #0a0a0a;
-  --off-black:  #111111;
-  --dark:       #1a1a1a;
-  --gray-dark:  #2a2a2a;
-  --gray:       #888;
-  --gray-light: #c8c8c8;
-  --white:      #fafafa;
-  --off-white:  #f4f2ee;
-  --gold:       #c9a84c;
-  --gold-light: #e2c97e;
-  --gold-dark:  #a0802e;
-  /* tons claros adicionados */
-  --surface-1:  #1e1e1e;
-  --surface-2:  #252525;
-  --surface-3:  #2e2e2e;
-  --border-light: rgba(255,255,255,0.07);
-  --text-muted:   #a0a0a0;
-  --serif: 'Raleway', sans-serif;
-  --sans:  'Montserrat', sans-serif;
+  --black:        #0f0f0f;
+  --off-black:    #1a1a1a;
+  --dark:         #1a1a1a;
+  --gray-dark:    #333333;
+  --gray:         #666666;
+  --gray-light:   #999999;
+  --white:        #ffffff;
+  --off-white:    #f8f6f2;
+  --cream:        #f0ece4;
+  --gray-border:  #e2ddd6;
+  --gold:         #c9a84c;
+  --gold-light:   #e2c97e;
+  --gold-dark:    #a0802e;
+  --gold-muted:   rgba(201,168,76,0.12);
+  --serif: 'Cormorant', Georgia, serif;
+  --sans:  'DM Sans', sans-serif;
   --nav-h: 4.5rem;
   --pad-x: 8%;
 }
@@ -74,16 +71,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
-  color: var(--white);
+  background: var(--white);
+  color: var(--gray-dark);
   font-family: var(--sans);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
 /* ─── NAV STICKY SIMPLES ─── */
@@ -96,9 +93,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 var(--pad-x);
-  background: rgba(10,10,10,0.95);
+  background: rgba(255,255,255,0.94);
   backdrop-filter: blur(16px);
-  border-bottom: 0.5px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid var(--gray-border);
 }
 
 .topbar-logo img {
@@ -117,15 +114,15 @@ body {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--black);
-  background: var(--gold);
+  color: var(--white);
+  background: var(--gold-dark);
   padding: 0.65rem 1.5rem;
   text-decoration: none;
   transition: background 0.3s, transform 0.2s;
   white-space: nowrap;
 }
 
-.topbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.topbar-cta:hover { background: var(--gold); transform: translateY(-1px); }
 
 .topbar-cta .cta-mobile { display: none; }
 
@@ -250,7 +247,7 @@ body {
   grid-template-columns: 1fr 1fr;
   position: relative;
   overflow: hidden;
-  background: var(--black);
+  background: var(--white);
 }
 
 .hero-bg {
@@ -292,31 +289,138 @@ body {
   margin-bottom: 1.75rem;
 }
 
-/* ─── TONS MAIS CLAROS NAS SEÇÕES ALTERNADAS ─── */
-.pain-section       { background: var(--surface-1); }
-.pain-card          { background: var(--surface-1); }
-.pain-card:hover    { background: var(--surface-2); }
+/* ─── PALETA CLARA — AJUSTES DE TEXTO E SEÇÕES ─── */
 
-.compare-section    { background: var(--surface-1); }
-.compare-card       { background: var(--surface-2); }
+/* seções alternadas */
+.pain-section         { background: var(--off-white); }
+.pain-card            { background: var(--white); border: 1px solid var(--gray-border); box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.pain-card:hover      { background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.pain-card h3         { color: var(--black); }
+.pain-card p          { color: var(--gray); }
 
-.testimonials-section { background: var(--surface-1); }
-.tcard              { background: var(--surface-2); }
+.compare-section      { background: var(--off-white); }
+.compare-card         { background: var(--white); border: 1px solid var(--gray-border); }
 
-.faq-section        { background: var(--surface-1); }
-.faq-item:hover     { background: rgba(201,168,76,0.04); }
+.testimonials-section { background: var(--off-white); }
+.tcard                { background: var(--white); border: 1px solid var(--gray-border); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.tcard .tcard-text    { color: var(--gray-dark); }
+.tcard .author-name   { color: var(--black); }
 
-.urgency-section    { background: var(--off-black); }
+.faq-section          { background: var(--cream); }
+.faq-item             { background: var(--cream); }
+.faq-item:hover       { background: var(--white); }
+.faq-q                { color: var(--black); }
+.faq-a                { color: var(--gray); }
+.faq-a strong         { color: var(--gold-dark); }
 
-.value-section      { background: var(--black); }
-.payment-card       { background: var(--surface-2); }
+.urgency-section      { background: var(--white); }
+.urgency-inner        { border-color: rgba(201,168,76,0.4); background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%); }
+.urgency-inner::before,
+.urgency-inner::after { background: var(--white); }
+.urgency-title        { color: var(--black); }
+.urgency-desc         { color: var(--gray); }
+.ubullet              { color: var(--gray-dark); }
 
-.cost-row           { background: rgba(255,255,255,0.03); border-color: var(--border-light); }
-.cost-row.highlight { background: rgba(201,168,76,0.07); }
+.value-section        { background: var(--cream); }
+.payment-card         { background: var(--white); border: 1px solid rgba(201,168,76,0.35); }
+.payment-headline     { color: var(--black); }
+.payment-sub          { color: var(--gray); border-bottom-color: var(--gray-border); }
+.payment-perk-text    { color: var(--gray); }
+.payment-perk-text strong { color: var(--black); }
+.payment-cta-note     { color: var(--gray-light); }
 
-.process-section    { background: var(--off-black); }
+.cost-row             { background: var(--off-white); border: 1px solid var(--gray-border); }
+.cost-row-label       { color: var(--gray-dark); }
+.cost-row-label span  { color: var(--gray-light); }
+.cost-row-value       { color: var(--gray); }
+.cost-row.highlight   { background: var(--gold-muted); border-color: rgba(201,168,76,0.3); }
+.cost-row.highlight .cost-row-value { color: var(--gold-dark); }
+.cost-row.highlight .cost-row-label { color: var(--black); }
+.cost-disclaimer      { color: var(--gray-light); }
 
-.doctor-section     { background: var(--black); }
+.process-section      { background: var(--cream); }
+.pstep h3             { color: var(--black); }
+.pstep p              { color: var(--gray); }
+.pstep-dot            { background: var(--cream); color: var(--gold-dark); border-color: var(--gold); }
+.process-reassurance  { background: var(--white); border: 1px solid rgba(201,168,76,0.25); }
+.process-reassurance p { color: var(--gray); }
+.process-reassurance strong { color: var(--black); }
+
+.doctor-section       { background: var(--white); }
+.doctor-story         { color: var(--gray); }
+.doctor-story strong  { color: var(--black); }
+.doctor-quote         { background: var(--off-white); border-left: 2px solid var(--gold); }
+.doctor-quote p       { color: var(--black); }
+.dvalue               { background: var(--off-white); border: 1px solid var(--gray-border); }
+.dvalue-label         { color: var(--gray-light); }
+.doctor-credential    { background: var(--white); border-left: 2px solid var(--gold); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.doctor-credential-name { color: var(--black); }
+
+/* hero textos */
+.hero-title            { color: var(--black); }
+.hero-title em         { color: var(--gold-dark); }
+.hero-subtitle         { color: var(--gray); }
+.hero-urgency          { color: var(--gold-dark); border-color: rgba(201,168,76,0.35); background: var(--gold-muted); }
+.htrust-item           { color: var(--gray-light); }
+.hero-badge            { background: var(--white); border: 1px solid var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.15); }
+.hero-badge-num        { color: var(--gold-dark); }
+
+/* hero gradient lateral invertido */
+.hero-visual::before   { background: linear-gradient(to right, var(--white) 0%, rgba(255,255,255,0.3) 30%, transparent 55%); }
+
+/* hero badge mobile */
+.hero-mobile-badge     { background: rgba(255,255,255,0.92); border: 0.5px solid rgba(201,168,76,0.35); }
+.float-badge-num       { color: var(--gold-dark); }
+.float-badge-label     { color: var(--gray-light); }
+
+/* section titles e eyebrow no fundo claro */
+.section-title         { color: var(--black); }
+.section-title em      { color: var(--gold-dark); font-style: italic; font-weight: 400; }
+.eyebrow               { color: var(--gold-dark); }
+.eyebrow::before       { background: var(--gold); }
+.lead                  { color: var(--gray); }
+
+/* check-list */
+.check-list li         { color: var(--gray-dark); }
+
+/* solution */
+.solution-pill         { background: var(--white); border: 1px solid var(--gold); box-shadow: 0 4px 16px rgba(201,168,76,0.12); }
+.solution-pill-num     { color: var(--gold-dark); }
+.solution-pill-label   { color: var(--gray-light); }
+.solution-img-wrap::after { border-color: rgba(201,168,76,0.3); }
+
+/* gold line mais visível no fundo claro */
+.gold-line { opacity: 0.4; }
+
+/* final cta — mantém escuro como contraste */
+.final-cta { background: var(--black); }
+.final-cta .section-title { color: var(--white); }
+.final-cta .section-title em { color: var(--gold-light); }
+.final-cta .lead { color: rgba(255,255,255,0.65); }
+.final-cta .eyebrow { color: var(--gold); }
+.final-cta .eyebrow::before { background: var(--gold); }
+.final-cta-note { color: rgba(255,255,255,0.35); }
+
+/* footer */
+.footer-mini { background: var(--off-white); border-top: 1px solid var(--gray-border); }
+.footer-mini-copy { color: var(--gray-light); }
+.footer-mini-links a { color: var(--gray); }
+.footer-mini-links a:hover { color: var(--gold-dark); }
+
+/* depoimentos no fundo claro */
+.tcard-stars svg { fill: var(--gold); }
+.tcard::before { color: var(--gold); opacity: 0.1; }
+.author-detail { color: var(--gold-dark); }
+
+/* urgency ornaments */
+.urgency-title em   { color: var(--gold-dark); }
+.urgency-tag        { background: var(--gold-dark); color: var(--white); }
+
+/* btn ajustes */
+.btn-gold { background: var(--gold-dark); }
+.btn-gold::before { background: var(--gold); }
+.btn-outline { color: var(--gold-dark); border-color: rgba(201,168,76,0.5); }
+.btn-outline:hover { background: var(--gold-muted); }
 
 .eyebrow {
   font-weight: 700;
@@ -379,7 +483,7 @@ body {
   position: absolute;
   bottom: 0.85rem; left: 0.85rem;
   z-index: 3;
-  background: rgba(10,10,10,0.82);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
   border: 0.5px solid rgba(201,168,76,0.35);
   padding: 0.75rem 1rem;
@@ -517,7 +621,7 @@ body {
   position: absolute;
   bottom: 2.5rem; right: 2rem;
   z-index: 10;
-  background: rgba(10,10,10,0.88);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   border: 0.5px solid rgba(201,168,76,0.35);
   padding: 1.25rem 1.5rem;
@@ -548,7 +652,7 @@ body {
 
 /* ─── 2. DOR — ÂNCORA EMOCIONAL ─── */
 .pain-section {
-  background: var(--off-black);
+  background: var(--off-white);
   padding: 5rem var(--pad-x);
   position: relative;
   overflow: hidden;
@@ -579,7 +683,7 @@ body {
 }
 
 .pain-card {
-  background: var(--off-black);
+  background: var(--off-white);
   padding: 2.5rem 2rem;
   position: relative;
   overflow: hidden;
@@ -595,7 +699,7 @@ body {
   transition: opacity 0.4s;
 }
 
-.pain-card:hover { background: var(--dark); }
+.pain-card:hover { background: var(--cream); }
 .pain-card:hover::after { opacity: 0.6; }
 
 .pain-emoji {
@@ -667,7 +771,7 @@ body {
 .solution-pill {
   position: absolute;
   top: 1.5rem; left: -1.5rem;
-  background: var(--dark);
+  background: var(--cream);
   border: 0.5px solid rgba(201,168,76,0.3);
   padding: 1rem 1.5rem;
 }
@@ -721,7 +825,7 @@ body {
 
 /* ─── 4. COMPARATIVO RESINA vs PORCELANA ─── */
 .compare-section {
-  background: var(--off-black);
+  background: var(--off-white);
   padding: 6rem var(--pad-x);
   position: relative;
   overflow: hidden;
@@ -756,7 +860,7 @@ body {
 
 .compare-card {
   border: 0.5px solid rgba(201,168,76,0.15);
-  background: var(--dark);
+  background: var(--cream);
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
@@ -900,8 +1004,8 @@ body {
   font-family: var(--serif);
   font-size: 0.9rem;
   font-weight: 300;
-  color: var(--gold);
-  background: var(--black);
+  color: var(--gold-dark);
+  background: var(--cream);
   position: relative; z-index: 1;
 }
 
@@ -910,7 +1014,7 @@ body {
   font-size: 1.05rem;
   font-weight: 300;
   letter-spacing: 0.04em;
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 0.6rem;
 }
 
@@ -924,8 +1028,8 @@ body {
 .process-reassurance {
   margin-top: 3.5rem;
   padding: 2rem 2.5rem;
-  border: 0.5px solid rgba(201,168,76,0.2);
-  background: rgba(201,168,76,0.03);
+  border: 0.5px solid rgba(201,168,76,0.25);
+  background: var(--white);
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -935,7 +1039,7 @@ body {
 
 .process-reassurance svg {
   width: 2.5rem; height: 2.5rem;
-  stroke: var(--gold); fill: none;
+  stroke: var(--gold-dark); fill: none;
   stroke-width: 1.2; flex-shrink: 0;
 }
 
@@ -943,14 +1047,14 @@ body {
   font-size: 0.82rem;
   font-weight: 300;
   line-height: 1.75;
-  color: var(--gray-light);
+  color: var(--gray);
 }
 
-.process-reassurance strong { color: var(--white); font-weight: 500; }
+.process-reassurance strong { color: var(--black); font-weight: 500; }
 
 /* ─── 6. DEPOIMENTOS ─── */
 .testimonials-section {
-  background: var(--off-black);
+  background: var(--off-white);
   padding: 6rem var(--pad-x);
 }
 
@@ -966,7 +1070,7 @@ body {
 }
 
 .tcard {
-  background: var(--dark);
+  background: var(--cream);
   border: 0.5px solid rgba(201,168,76,0.12);
   padding: 2.25rem;
   position: relative;
@@ -1151,7 +1255,7 @@ body {
 
 /* ─── 8. FAQ ─── */
 .faq-section {
-  background: var(--off-black);
+  background: var(--off-white);
   padding: 6rem var(--pad-x);
 }
 
@@ -1269,7 +1373,7 @@ body {
 
 /* ─── FOOTER MINI ─── */
 .footer-mini {
-  background: var(--off-black);
+  background: var(--off-white);
   border-top: 0.5px solid rgba(201,168,76,0.12);
   padding: 2rem var(--pad-x);
   display: flex;
@@ -1491,10 +1595,11 @@ body {
 .doctor-credential {
   position: absolute;
   bottom: 2rem; left: -1.5rem;
-  background: var(--off-black);
+  background: var(--white);
   border-left: 2px solid var(--gold);
   padding: 1.25rem 1.75rem;
   z-index: 3;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .doctor-credential-name {
@@ -1502,7 +1607,7 @@ body {
   font-size: 1.05rem;
   font-weight: 300;
   letter-spacing: 0.06em;
-  color: var(--white);
+  color: var(--black);
 }
 
 .doctor-credential-title {
@@ -1510,7 +1615,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-dark);
   margin-top: 0.2rem;
 }
 
@@ -1615,7 +1720,7 @@ body {
 .tcard-result-label {
   position: absolute;
   top: 0.85rem; left: 0.85rem;
-  background: rgba(10,10,10,0.82);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(8px);
   border: 0.5px solid rgba(201,168,76,0.35);
   font-size: 0.55rem;
@@ -1907,7 +2012,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
 
     <div class="hero-urgency">
-      Vagas limitadas para avaliação gratuita em junho
+      Vagas limitadas para avaliação gratuita em maio
     </div>
 
     <div class="hero-ctas">
@@ -1941,11 +2046,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </section>
 
+<!-- ═══════════════════════════════
+     2. DOR — ÂNCORA EMOCIONAL (COMENTADA)
+═══════════════════════════════
 <div class="gold-line"></div>
 
-<!-- ═══════════════════════════════
-     2. DOR — ÂNCORA EMOCIONAL
-═══════════════════════════════ -->
 <section class="pain-section">
   <div class="pain-intro reveal">
     <div class="eyebrow" style="justify-content:center;">Você se identifica?</div>
@@ -2412,7 +2517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="urgency-section" id="agendar">
 
   <div class="urgency-inner">
-    <div class="urgency-tag">Oferta de Junho</div>
+    <div class="urgency-tag">Oferta de Maio</div>
 
     <h2 class="urgency-title reveal">
       Sorriso novo<br>
